@@ -1,0 +1,80 @@
+/**************导航*****************/
+/*.col-xs-12,.col-sm-6,.col-md-8,.col-md-4{padding: 0px;}*/
+.navbar-default .navbar-collapse{border-color: #fff;}
+.navbar-header img{width:70%;}
+.navbar{margin:0px;background: #fff;border:none; }
+.navbar-nav{float: right;}
+.navbar-nav{
+	height:60px;
+	line-height: 60px;
+	margin:10px 0px;}
+.navbar-nav > li{
+	margin:0px 30px;
+	
+}
+.navbar-nav > li > a{
+	padding:0px;
+}
+.nav > li > a {
+	color:#4a4a4a;
+	font-size:15px;
+    font-weight: bold;
+	line-height: 68px;
+	-webkit-transition: all .3s ease 0s;
+	transition: all .3s ease 0s;
+}
+.navbar-collapse{padding:0px;}
+.nav_end{margin-right:0px;}
+.navbar-header a{
+	height:100px;
+	line-height: 100px;}
+.navbar-default{background: #fff;}
+.navbar-default .navbar-nav > .active > a{
+	background: none;
+	border-bottom: solid 2px #089fe3;
+	color: #089fe3;}
+.navbar-default .navbar-nav > li > a:hover{ color: #089fe3;}
+.navbar-nav > li > a:before{
+	content:'';
+	position:absolute;
+	display: block;
+	top:100%;
+	left: 0;
+	width: 0px;
+	height: 2px;
+	background:#089fe3;
+	z-index: 10;
+	-webkit-transition: all .3s ease 0s;
+	transition: all .3s ease 0s;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #4a4a4a;
+}
+.navbar-nav > li > a:hover:before{width: 100%;-webkit-transition: all .3s ease 0s;
+	transition: all .3s ease 0s;}
+#navbar-collapse{z-index: 999}
+.navbar-collapse .nav li>a:hover:before{width: 100%;}
+
+.top-nav-collapse{
+    background: #fff;
+    z-index: 999999;
+    box-shadow: 0px 3px 6px 3px rgba(0,0,0,0.06);
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+
+
+/************************/
+.img_trans{width:100%;position: relative;overflow: hidden;border:solid 5px #6d6d6d;
+	border-radius: 50%;padding-top:100%;background: #ddd;transition: all .5s ease-in-out;transition: all .5s ease-in-out;
+    transition-timing-function: cubic-bezier(.5, 1.5, 1, 1);}
+.img_item{width:100%;height:100%;background: url(../images/1.png) no-repeat 10px 50px;
+    transition: all .5s ease-in-out;position: absolute;top: 0px;left: 0px;background-size: auto 60%;
+    transition: all .5s ease-in-out;transition: all .5s ease-in-out;
+    transition-timing-function: cubic-bezier(.5, 1.5, 1, 1);}
+.img_item:hover{background: url(../images/1.png) no-repeat 100%  50px;background-size: auto 60%;}    
+.img_trans:hover{background:#fff;}

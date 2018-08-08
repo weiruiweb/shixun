@@ -1,0 +1,58 @@
+* {
+	margin:0;
+	padding: 0;
+}
+body {
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体"; 
+	color: #000;
+	font-size: 14px;
+	overflow-x: hidden !important;
+	position: relative;
+	font-weight:normal;
+}
+h1,h2,h3,h4,h5,h6,p,ul { 
+	margin: 0;
+	padding: 0;
+}
+h1,h2,h3,h4,h5,h6 {
+/*	font-family: 'Josefin Sans', sans-serif;*/
+	color: #272626;
+	text-transform: capitalize;
+	font-weight: normal;
+}
+
+
+a { cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+	-webkit-transition: all .5s ease-out;
+	   -moz-transition: all .5s ease-out;
+	    -ms-transition: all .5s ease-out;
+	     -o-transition: all .5s ease-out;
+	        transition: all .5s ease-out;
+}
+a:hover,a:active,a:visited,a:focus {
+	text-decoration: none;
+	outline: none;
+}
+button {
+	border: none;
+	outline: none;
+	box-shadow: none;
+	display: block; 
+	padding: 0;
+}
+ul {
+	list-style-type: none;
+}
+/*img {width: 100%; display: block;}*/
+input,textarea {outline: none; -webkit-box-shadow: none; box-shadow: none;-webkit-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}
+.main-page-wrapper {overflow-x: hidden !important;}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
