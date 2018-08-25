@@ -409,7 +409,7 @@
             </div>
         </div>
     </div>
-    <div class="footer">
+    <div class="footer" style="margin-top: 1.5rem">
         <img src="images/fotter.png" class="img-responsive footer_bg">
         <div class="footer_cont">
             <div class="contact">
@@ -583,6 +583,102 @@
 // });
 </script>
 <script type="text/javascript">
+$(window).load(function() {
+    
+
+     $('.about_content').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
+    
+           $('.intro_left').addClass('fadeInLeft animated');  
+           $('.intro_right').addClass('fadeInRight animated'); 
+        }
+    }, {
+        offset: '400px'
+
+    }); 
+   
+    
+     $('.team_cont').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
+
+
+            $('.item_img').each(function(k) {
+                var el = $(this);
+
+                setTimeout(function() {
+                    el.addClass('fadeInLeft animated');
+                }, k * 200, 'easeInOutExpo');
+
+            });
+
+        }
+    }, {
+        offset: '600px'
+
+    });
+     $('.coopperate').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
+
+
+            $('.cooper_item').each(function(k) {
+                var el = $(this);
+
+                setTimeout(function() {
+                    el.addClass('fadeInLeft animated');
+                }, k * 200, 'easeInOutExpo');
+
+            });
+
+        }
+    }, {
+        offset: '600px'
+
+    });
+     $('.news').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
+
+
+            $('.news_item').each(function(k) {
+                var el = $(this);
+
+                setTimeout(function() {
+                    el.addClass('fadeInUp animated');
+                }, k * 200, 'easeInOutExpo');
+
+            });
+
+        }
+    }, {
+        offset: '600px'
+
+    });
+    //  $('.works').waypoint(function(direction) {
+
+    //     if (direction === 'down' && !$(this.element).hasClass('animated')) {
+
+
+    //         $('.works_item').each(function(k) {
+    //             var el = $(this);
+
+    //             setTimeout(function() {
+    //                 el.addClass('imgScale1 animated');
+    //             }, k * 300, 'easeInOutExpo');
+
+    //         });
+
+    //     }
+    // }, {
+    //     offset: '600px'
+
+    // });
+    
+
+
+});
 
 
 </script>

@@ -2,6 +2,7 @@
 	.nav_container{
 		width:78%;
 	}
+
 }
 @media (min-width:1430px)and (max-width: 1729px){
 	.nav_container{
@@ -23,6 +24,12 @@
 	}
 	.detail_cont{
 		width:85%;
+	}
+	.right_tlt,.cooper1_img{
+		margin-top: 0.2rem;
+	}
+	.pro_h{
+		font-size: 0.32rem;
 	}
 }
 @media (min-width:1200px)and (max-width: 1429px){
@@ -62,6 +69,12 @@
 	}
 	.detail_tlt .p1{
 		font-size:0.36rem;
+	}
+	.right_tlt,.cooper1_img{
+		margin-top: 0.2rem;
+	}
+	.pro_h{
+		font-size: 0.28rem;
 	}
 }
 @media (min-width:1200px){
@@ -119,6 +132,24 @@
 	.detail_tlt .p1{
 		font-size:0.36rem;
 	}
+	.menu_ul{
+		padding: 0;
+	}
+	.right_tlt,.cooper1_img{
+		margin-top:0.15rem;
+	}
+	.product_item{
+		margin-top: 1.8rem;
+	}
+	.pro_h{
+		font-size: 0.3rem;
+	}
+	.team_cont{
+		width:96%;
+	}
+	.coopper_cont{
+		width:97%;
+	}
 }
 
 @media (max-width: 991px) {
@@ -129,8 +160,15 @@
 	.banner_rightTxt{
 		left:70%;
 	}
-	.nav_container{
-		width:90%;
+	.menu_all .nav_container{
+		width:100%;
+		padding:0.8rem 0 0;
+	}
+	.menu_ul{
+		padding: 0;
+	}
+	.menu{
+		padding:0;
 	}
 	
 	.case1_cont h4{
@@ -214,6 +252,21 @@
 	
 		line-height: 0.4rem;
 	}
+	.right_tlt,.cooper1_img{
+		margin-top:0.15rem;
+	}
+	.right_tlt a{
+		margin-top: 0.2rem;
+	}
+	.product_left1 .left_tlt{
+		width:100%;
+	}
+	.product_item {
+		margin-top: 1.8rem;
+	}
+	.pro_h{
+		font-size: 0.3rem;
+	}
 }
 @media(min-width:768px ) and (max-width:991px){
 
@@ -234,8 +287,8 @@
 	.search{
 		float: left;
 		margin-left: 10%;
-		width:48%;
-		margin-right: 2%;
+		width:47%;
+		margin-right: 3%;
 		height:0.8rem;
 		margin-top:0.2rem;
 	}
@@ -261,10 +314,13 @@
 	}
 	.banner img{
 		width:100%;
-		min-height: 320px;
+		min-height: 240px;
 	}
 	.menu{
 		padding: 0;
+	}
+	.menu_ul{
+		padding: 0
 	}
 	.menu li{
 		margin-bottom: 0.2rem;
@@ -279,11 +335,15 @@
 		line-height:0.4rem;
 	}
 	#second_menu{
-		height: 5rem;
+		/*height: 5rem;*/
 		top:2.6rem;
 	}
 	#second_menu1{
-		height: 5rem;
+	/*	height: 5rem;*/
+		top:2.6rem;
+	}
+	#second_menu2{
+
 		top:2.6rem;
 	}
 	.carousel-indicators{
@@ -315,10 +375,10 @@
 		min-height: 10.6rem;
 	}
 	.team_cont{
-		width:100%;
+		width:96%;
 	}
 	.coopper_cont{
-		width: 100%;
+		width: 98%;
 	}
 	.news_left,.news_right{
 		width:100%;
@@ -361,6 +421,77 @@
 	.detail_tlt{
 		margin-top:0.8rem;
 	}
+	.product_left1,.product_right1{
+		width:50%;
+	}
+	.right_tlt{
+		width: 100%;
+	}
+	.right_tlt a{
+		margin-top: 0.65rem;
+		width:2.2rem;
+		height:0.7rem;
+		line-height:0.7rem;
+	}
+	
+	.left_tlt .p2{
+		line-height: 0.5rem;
+	}
+	.left_tlt{
+		width: 50%;
+	}
+	.cooper1_img {
+		display: none;
+	}
+	.video{
+		padding-left:0.5rem;
+		min-height:16rem;
+	}
+	.video_left{text-align: center;}
+	.video_left,.video_right{
+		width: 100%;
+	}
+	.process_des .des_tlt{
+		font-size:0.4rem;
+	}
+	.right_cont .zh_tlt{
+		font-size: 0.4rem;
+	}
+	.product_item{
+
+		margin-bottom:0rem;
+	}
+	.item2{
+	margin-top: 1.2rem;
+	}
+	.product_left3 img{
+		max-width:80%;
+	}
+	.case_list{
+		width: 80%;
+	}
+	.case_list img{
+		max-width: 80%;
+	}
+	.case_left,.case_right{
+		width: 45%;
+	}
+	.pro_h{
+		font-size:0.32rem;
+	}
+	.menu dl{
+		display: none;
+	}
+	.team{
+		margin:1rem 0;
+	}
+	.team_cont{
+		margin:1rem auto;
+	}
+	.menu ul{
+		width: 25%;
+		float: left;
+	}
 }
 @media(min-width:480px ) and (max-width:767px){
 	.product_left,.product_right{
@@ -375,41 +506,72 @@
 	.title_all .eng_tlt{
 		width: 3.4rem;
 	}
+	
+	.menu li{
+		float:none;
+		width: 100%;
+	}
+	
+
+	#second_menu1{
+		top:3.1rem;
+	}
+	#second_menu2{
+		top:3.1rem;
+	}
+	.team_cont{
+		width: 100%;
+	}
 }
+
 @media (max-width: 480px) {
 	#second_menu{
 		top:3.1rem;
 	}	
 	.search{
 		margin-top: 0.5rem;
+		width: 48%;
+		margin-right: 2%;
 	}
 	
 	.menu li{
-		width:25%;
+		float: none;
+		width:100%;
 		margin-bottom: 0.5rem;
 		position:relative;
+		transition: all 1s;
+		-webkit-transition:all 1s;
 	}
 	.menu li a{
 		height: 1rem;
 
 	}
 	.menu dl a{
-		color:#333;
+		color:#fff;
 	}
 	.menu dl{
 		display: none;
-		position:absolute;
+		margin-top: 0.4rem;
+		/*position:absolute;
 		top:0;
 		left:80%;
 		background: #fff;
 		width:80%;
 		height:auto;
-		z-index: 999;
+		z-index: 999;*/
 	}
-	
+	.menu dl a{
+		height: 0.8rem;
+		line-height: 0.8rem;
+	}
 	#second_menu1{
-		height: 5.3rem;
+		/*height: 5.3rem;*/
 		top:3.1rem;
+		padding-bottom: 0.6rem;
+	}
+	#second_menu2{
+		top:3.1rem;
+		padding-bottom: 0.6rem;
 	}
 	.carousel-indicators{
 		left:88%;
@@ -421,14 +583,8 @@
 	.banner_content{
 		top:25%;
 	}
-	.video_bg{
-		width: 100%;
-		min-height: 600px;
-	}
-	.video_left{text-align: center;}
-	.video_left,.video_right{
-		width: 100%;
-	}
+	
+	
 	.right_cont{width: 96%;padding:0 2%;}
 	.process_des{
 		width:90%;
@@ -457,11 +613,12 @@
 	.product_left1,.product_left,.product_right,.product_right1{
 		width: 100%;
 	}
-	.left_tlt{
-		width: 36%;
-	}
+	
 	.product_left1 .left_tlt{
-		width: 38%;
+		width: 50%;
+	}
+	.left_tlt .p1{
+		font-size:0.8rem;
 	}
 	.left_tlt .p2{
 		line-height: 0.7rem;
@@ -490,7 +647,10 @@
 		font-size:0.12rem;
 	}
 	.item2 .product_des{
-		left:1.6rem;
+		left:2rem;
+	}
+	.item4 .product_des{
+		left: 3.5rem;
 	}
 	.about_bg{
 		min-height: 11.6rem;
@@ -529,4 +689,23 @@
 	.detail_cont .p2{
 		line-height: 0.8rem;
 	}
+	.clear_ul{
+		clear: none;
+	}
+	
+	.right_tlt{
+		padding:0.5rem;
+	}
+	.video{
+		padding-left:0.3rem;
+		min-height:20rem;
+	}
+	.pro_h{
+		font-size:0.38rem;
+	}
+	.team_cont{
+		width: 100%;
+	}
+	
+
 }
