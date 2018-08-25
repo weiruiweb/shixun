@@ -1,5 +1,5 @@
 window.base={
-    g_restUrl:'https://solelynet.com/public/index.php/api/v1/',
+    g_restUrl:'http://solelytech.iicp.net/cmsygr/public/index.php/api/v1/',
 
     getData:function(params){
         if(!params.type){
@@ -27,7 +27,21 @@ window.base={
     articleList:function(param,callback) {
   
         var allParams = {
-            url:'UserArticle/GetList',
+            url:'Common/Article/get',
+            type:'post',
+            data:param,
+            sCallback: function(data){
+                callback&&callback(data);
+            }
+        };
+        this.getData(allParams)
+    },
+
+
+    labelGet:function(param,callback) {
+  
+        var allParams = {
+            url:'Common/Label/get',
             type:'post',
             data:param,
             sCallback: function(data){

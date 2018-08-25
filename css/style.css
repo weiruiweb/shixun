@@ -146,6 +146,7 @@ dl{
 }
 #second_menu1{
 	display: none;
+<<<<<<< HEAD
 	width:100%;
 	padding-bottom: 0.2rem;
 	position: absolute;
@@ -159,6 +160,26 @@ dl{
 #second_menu2{
 	display: none;
 	width: 100%;
+=======
+	width:0%;
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
+	padding-bottom: 0.2rem;
+	position: absolute;
+	top:1rem;
+	background: rgba(0,0,0,0.8);
+	transition:all 1s;
+	z-index: 999;
+<<<<<<< HEAD
+	transition:all 1s;
+	-webkit-transition:all 1s;
+}
+=======
+	transition: all 0.5s;
+	-webkit-transition:all 0.5s;
+}
+#second_menu2{
+	display: none;
+	width: 0%;
 	padding-bottom: 0.2rem;
 	position: absolute;
 	top:1rem;
@@ -168,6 +189,7 @@ dl{
 	transition:all 1s;
 	-webkit-transition:all 1s;
 }
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
 .menu_ul{
 	padding: 0 5%;
 	margin-top: 0.3rem;
@@ -175,7 +197,11 @@ dl{
 }
 .menu{
 	float: left;
+<<<<<<< HEAD
 	width: 100%;
+=======
+	width: 33.3%;
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
 	overflow:hidden;
 }
 .menu a{
@@ -183,7 +209,11 @@ dl{
 	color:#fff;
 }
 .menu li{
+<<<<<<< HEAD
 	width:11.11%;
+=======
+	width:33.33%;
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
 	float: left;
 	text-align: center;
 }
@@ -471,9 +501,11 @@ dl{
 }
 .product_left1 .left_tlt{
 	width: 36%;
+	overflow: hidden;
 }
 .left_tlt{
 	width: 18%;
+	overflow: hidden;
 	padding:0.4rem 0.25rem;
 	position: absolute;
 	top:0;
@@ -486,11 +518,13 @@ dl{
 	color: #fff;
 	font-size: 0.26rem;
 	margin-bottom: 0.3rem;
+	overflow: hidden;
 }
 .left_tlt .p2{
 	color: #fff;
 	font-size: 0.14rem;
 	line-height: 0.3rem;
+	overflow: hidden;
 }
 .product_left1{
 	width: 34%;

@@ -488,10 +488,13 @@
 	.team_cont{
 		margin:1rem auto;
 	}
+<<<<<<< HEAD
 	.menu ul{
 		width: 25%;
 		float: left;
 	}
+=======
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
 }
 @media(min-width:480px ) and (max-width:767px){
 	.product_left,.product_right{
@@ -506,13 +509,25 @@
 	.title_all .eng_tlt{
 		width: 3.4rem;
 	}
+<<<<<<< HEAD
 	
+=======
+	.menu{
+		width: 25%;
+	}
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
 	.menu li{
 		float:none;
 		width: 100%;
 	}
+<<<<<<< HEAD
 	
 
+=======
+	.clear_ul{
+		clear: none;
+	}
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
 	#second_menu1{
 		top:3.1rem;
 	}
@@ -532,8 +547,16 @@
 		margin-top: 0.5rem;
 		width: 48%;
 		margin-right: 2%;
+<<<<<<< HEAD
+=======
 	}
-	
+	.menu{
+		width: 25%;
+	}
+	.menu{
+		float: left;
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
+	}
 	.menu li{
 		float: none;
 		width:100%;
@@ -566,12 +589,21 @@
 	}
 	#second_menu1{
 		/*height: 5.3rem;*/
+<<<<<<< HEAD
 		top:3.1rem;
 		padding-bottom: 0.6rem;
 	}
 	#second_menu2{
 		top:3.1rem;
 		padding-bottom: 0.6rem;
+=======
+		top:3.1rem;
+		padding-bottom: 0.6rem;
+	}
+	#second_menu2{
+		top:3.1rem;
+		padding-bottom: 0.6rem;
+>>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
 	}
 	.carousel-indicators{
 		left:88%;
