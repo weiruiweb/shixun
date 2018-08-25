@@ -43,105 +43,47 @@
                 <div class="index_nav">
                      <ul class="navlist fix" id="phone_navlist">
                         <li class=""><a href="inedx.html">首页</a></li>
-                        <li onmouseover="thisMenu1()" onmouseout="thisMenH()"><a  onmouseover="thisMenu1()" onmouseout="thisMenH()" href="product.html">产品中心</a></li>
-                        <li onmouseover="thisMenu()" onmouseout="thisMenH1()">
-                            <a href="case.html"  onmouseover="thisMenu1()" onmouseout="thisMenH()">
-                                    行业案例
-                            
-                             </a>
+                        <li onmouseover="second_show1()">
+                            <a href="product.html">产品中心</a></li>
+                        <li class="this_li" onmouseover="second_show2()">
+                            <a href="case.html">行业案例</a>
                         </li>
-                        <li class="this_li">
+                        <li>
                             <a href="about.html">
                                 关于我们
                                
                              </a>
                         </li>
                     </ul>
-                </div>
             </div>
         </div>
-        
-        <div class="" id="second_menu1">
-            <div class="nav_container">
-                <ul class="menu">
-                   
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#" >边海防护</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">边海防护</a></dt>
-                            <dt ><a href="#">森林防火</a></dt>  
-                            <dt ><a href="#">高铁防护</a></dt>       
-                        </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">机场产品</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">电子围栏</a></dt>    
-                        </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高铁产品</a>
-                        <dl>
-                                <dt ><a href="#">高铁防护</a></dt> 
-                                <dt ><a href="#">高铁防护</a></dt>   
-                                <dt ><a href="#">高铁防护</a></dt>      
+           <div class="menu_all" id="second_menu1" style="display: block">
+                <div class="nav_container">
+                    <ul class="menu" v-if="labelData">
+                        <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-if="productMenu&&productMenu.child" v-for="item in productMenu.child"> 
+                            <a href="#" >{{item.title}}</a>
+                            <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoProductDetail">
+                                <dt ><a href="#" :data-id="item1.id" @click="intoProductDetail">{{item1.title}}</a></dt>       
                             </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">林业产品</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">森林防火</a></dt>  
-                                <dt ><a href="#">高铁防护</a></dt>   
-                                <dt ><a href="#">高铁防护</a></dt>     
-                        </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">工业产品  
-                        </a>
-                        <dl>
-                            <dt ><a href="#">工业测温</a></dt> 
-                            <dt ><a href="#">森林防火</a></dt>      
-                         </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">工地产品</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">工地检测</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高点监控 </a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">高点监控</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高点监控</a>
-                         <dl class="small_menu">
-                            <dt ><a href="#">高点监控</a></dt>    
-                            <dt ><a href="#">森林防火</a></dt>  
-                            <dt ><a href="#">森林防火</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">嵌入式板</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">嵌入式板...</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高点监控</a>
-                         <dl class="small_menu">
-                            <dt ><a href="#">高点监控</a></dt>   
-                             <dt ><a href="#">森林防火</a></dt>  
-                            <dt ><a href="#">高铁防护</a></dt>   
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <div class="menu_all" id="second_menu2">
+            <div class="nav_container">
+                <ul class="menu" v-if="labelData">
+                    <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-if="caseMenu&&caseMenu.child" v-for="item in caseMenu.child">
+                        <a href="#" >{{item.title}}</a>
+                        <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoCaseDetail">
+                            <dt ><a href="#" :data-id="item1.id" @click="intoCaseDetail">{{item1.title}}</a></dt>           
                         </dl>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    </header>
+</div>
+</header>
     <div class="banner">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
@@ -182,7 +124,7 @@
         </div>
          <div class="product_title"> 
                 <p>COMPEANY PROFILE</p>
-                <h3>公司简介</h3>     
+                <h3>{{productData.info.data[0].title}}</h3>     
         </div>
         <div class="about_content">
             <div id="about">
@@ -198,16 +140,12 @@
                     </div>
                     <div class="intro_right">
                         <div class="introRight_tlt">
-                            <p>当前，各行各业加速开放进程，越来越多“裸泳”的公司将被动浮出水面。依靠行业政策红利获得的超额收益，正在逐渐成为明日黄花。在新形势下，如果公司研发投入和人才储备达不到业内的高标准，那么公司的发展前景堪忧。，但是行业龙头企业经常达到10%的水平，并且巨额的研发投入获得的技术创新回报，将引领着行业的发展方向，从而继续保持公司在行业中的领导地位。</p>
-                            <div class="intr_word">
-                                公开信息显示，华为2017年研发支出近900亿元，占营业收入的比例约15%。近十年来，华为将10%以上的收入投入研发活动中，累计投入金额接近4000亿元。即便放在全球的角度看，华为的研发投入仍然跻身前十......
-                            </div>
+                            <p class="p1" v-html="productData.info.data[0].content"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <div class="works">
         <img src="images/about_bg.jpg" class="img-responsive about_bg">
 
@@ -215,48 +153,27 @@
                 <div class="works_first">
                     <div class="works_tlt">
                         <p class="eng_tlt">COMPEANY PROFILE</p>
-                        <p class="zh_tlt">软件著作</p>
+                        <p class="zh_tlt">{{productData.info.data[1].title}}</p>
                     </div>
                     <div class="works_show">
-                        <div class="works_item">
+                        <div class="works_item" v-for="item in productData.info.data[1].bannerImg">
                             <div class="works_img">
-                                <img src="images/works.png" class="img-responsive">
+                                <img :src="item.url" class="img-responsive">
                             </div>
-                        </div>
-                        <div class="works_item">
-                            <div class="works_img">
-                                <img src="images/works.png" class="img-responsive">
-                            </div>
-                        </div>
-                        <div class="works_item">
-                            <div class="works_img">
-                                <img src="images/works.png" class="img-responsive">
-                            </div>
-                        </div>
-                       
+                        </div>                   
                     </div>
                 </div>
                 <div class="works_first works_second">
-                    <div class="works_tlt">
+                    <div class="works_tlt" >
                         <p class="eng_tlt">COMPEANY PROFILE</p>
-                        <p class="zh_tlt">专利证书</p>
+                        <p class="zh_tlt">{{productData.info.data[2].title}}</p>
                     </div>
                     <div class="works_show">
-                        <div class="works_item">
+                        <div class="works_item" v-for="item in productData.info.data[2].bannerImg">
                             <div class="works_img">
-                                <img src="images/works.png" class="img-responsive">
+                                <img :src="item.url" class="img-responsive">
                             </div>
-                        </div>
-                        <div class="works_item">
-                            <div class="works_img">
-                                <img src="images/works.png" class="img-responsive">
-                            </div>
-                        </div>
-                        <div class="works_item">
-                            <div class="works_img">
-                                <img src="images/works.png" class="img-responsive">
-                            </div>
-                        </div>
+                        </div>  
                        
                     </div>
                 </div>
@@ -264,21 +181,19 @@
     </div>
     <div class="team">
         <div class="team_tlt">
-            <h6>活力团队</h6>
+            <h6>{{productData.info.data[3].title}}</h6>
             <p>DYNAMIC TEAM</p>
         </div>
         <div  class="team_cont">
              <div id="carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active" >
-                      <div class="item_img"><img src="images/team1.jpg" alt="..." class="img-responsive"></div>
-                      <div class="item_img"><img src="images/team2.jpg" alt="..." class="img-responsive"></div>
-                      <div class="item_img"><img src="images/team3.jpg" alt="..." class="img-responsive"></div>
+                    <div class="item active" v-for="item in productData.info.data[3].bannerImg">
+                      <div class="item_img"><img :src="item.url" alt="..." class="img-responsive"></div>
+
                     </div>
-                    <div class="item" >
-                       <div class="item_img"><img src="images/team1.jpg" alt="..." class="img-responsive"></div>
-                      <div class="item_img"><img src="images/team2.jpg" alt="..." class="img-responsive"></div>
-                      <div class="item_img"><img src="images/team3.jpg" alt="..." class="img-responsive"></div>
+                    <div class="item" v-for="item in productData.info.data[3].bannerImg">
+                       <div class="item_img"><img :src="item.url" alt="..." class="img-responsive"></div>
+                      
                     </div>
                 </div>
                 <a class="left carousel-control hidden-xs" href="#carousel" role="button" data-slide="prev">
@@ -442,6 +357,7 @@
     </div>
     
 </div>
+</div>
 
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript " src="js/bootstrap.js"></script>
@@ -454,8 +370,9 @@
                 el: '#app',
                 data: function() {
                     return {
-                        bannerData: [],
-                        productData: [],
+                        bannerData:[],
+                        productData:[],
+                        labelData:[],
                         paginate: {
                             count: 0,
                             currentPage: 1,
@@ -463,21 +380,21 @@
                             is_page: true,
                         },
                         searchItem:{
-                            thirdapp_id: 18,
-                            menu_id: 269,
+                            thirdapp_id: 59,
                         },
                         pageArray:[],
                         allPages:0,
                         linkPage:'',
+                        productMenu:{},
+                        caseMenu:{},
+                        aboutMenu:{}
                     }
 
                 },
                 
                 created: function () {
-
-                    this.getArticleData();
                     this.getBannerData();
-
+                    this.getLabelData()
                 },
                 methods:{
 
@@ -485,8 +402,10 @@
                         var self = this;
                         var postData = window.base.cloneForm(self.paginate);
                         postData.searchItem = window.base.cloneForm(self.searchItem);
+                        postData.searchItem.menu_id = ['in',self.menu_array];
                         var callback = (res)=>{
-                            self.productData = res.data;
+                            self.productData = res;
+                            console.log(self.productData.info.data[3].bannerImg)
                             self.paginate['count'] = res.total;
                             window.base.computePageArr(self);
                         };
@@ -495,25 +414,45 @@
                     
 
                     getBannerData() {
-                        var self = this;
-                        
+                        var self = this;                    
                         var postData = {
                             count: 0,
                             currentPage: 1,
                             pagesize:6,
                             is_page:true,
                             searchItem:{
-                                thirdapp_id:18,
-                                id:420
+                                thirdapp_id:59,
+                                id:21
                             }
                         };
-
                         var callback = (res)=>{
-                            self.bannerData = res.data;
+                            self.bannerData = res.info.data[0];
                             console.log(self.bannerData)
                         };
                         window.base.articleList(postData,callback);
                     },
+
+
+                    getLabelData() {
+                        var self = this;
+                        var postData = window.base.cloneForm(self.paginate);
+                        postData.searchItem = {
+                            type:1
+                        };
+                        var callback = (res)=>{
+                            self.labelData = res.info.data;
+                            self.productMenu = window.base.findKeyFromArray(self.labelData,'title','产品中心')[0];
+                            self.caseMenu = window.base.findKeyFromArray(self.labelData,'title','行业案例')[0];
+                            self.aboutMenu = window.base.findKeyFromArray(self.labelData,'title','关于我们')[0]; 
+                            var length= self.aboutMenu['child'].length;
+                            self.menu_array = [];
+                            for(var i=0;i<length;i++){  
+                                self.menu_array.push(self.aboutMenu['child'][i].id)
+                            };
+                            self.getArticleData();
+                        };
+                        window.base.labelGet(postData,callback);
+                    },  
                     
 
                     changePage(e){
@@ -542,6 +481,18 @@
                         
                     },
                     
+                    intoCaseDetail(e){
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href="./case.html?id="+art_id;
+                    },
+
+                    intoProductDetail(e){
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href="./product.html?id="+art_id;
+                    },
+
                     intoDetail(e){
                         var self = this;
                         var art_id = window.base.getDataSet(e).id;
@@ -551,135 +502,106 @@
                 }
             });
 
+        $("#second_menu1").hover(function(){
+
+         
+                $(this).show();
+               
+                    },function(){
+                $(this).hide();
+        
+            
+        });
+
+        $("#second_menu2").hover(function(){
+           
+                $(this).show();
+               
+                    },function(){
+                $(this).hide();
+           
+        })
+
 </script>
 <script type="text/javascript">
-    function thisMenu(){
-        $("#second_menu").css("display","block")
+  
+    function second_show1(){
+        $("#second_menu2").css({"width":"0%","display":"none"});
+          
+        setTimeout(function(){
+             $("#second_menu1").css({"width":"100%","display":"block"});
+        },200)
+
     }
-     function thisMenu1(){
-        $("#second_menu1").css("display","block")
+
+
+
+     function second_show2(){ 
+        $("#second_menu1").css({"width":"0%","display":"none"});
+      
+        setTimeout(function(){
+             $("#second_menu2").css({"width":"100%","display":"block"});
+        },200) 
+
     }
-    function thisMenH(){
-        $("#second_menu").css("display","none");
-    }
-    function thisMenH1(){
-        $("#second_menu1").css("display","none")
-    }
-  var w=$(window).width();
+   
+
+ var w=$(window).width();
   if(w<768){
-    function  menuShow(){
-        $(".small_menu").css("display","block");
-        $(this).find("dl").css("display","block");
+    
+    function  menuShow(event){
+    
+        $(event).find("dl").css({"height":"100%","display":"block"});
+       
     }
-     function  menuHidden(){
-        $(".small_menu").css("display","none")
-        $(this).find("dl").css("display","none");
+     function  menuHidden(event){
+
+      
+        $(event).find("dl").css({"height":"0","display":"none"});
     }
-}
-// $(function(){
-//     $(".menu li").hover(function(){
-//         $(this).find("dl").css("display","block")
-//     })
-// });
+   }
 </script>
 <script type="text/javascript">
 $(window).load(function() {
     
 
-     $('.about_content').waypoint(function(direction) {
+     $('#item1').waypoint(function(direction) {
 
         if (direction === 'down' && !$(this.element).hasClass('animated')) {
     
-           $('.intro_left').addClass('fadeInLeft animated');  
-           $('.intro_right').addClass('fadeInRight animated'); 
+           $('.item1_left').addClass('fadeInLeft animated');  
+           $('.item1_right').addClass('fadeInRight animated'); 
         }
     }, {
-        offset: '400px'
+        offset: '300px'
 
-    }); 
-   
+    });
+     $('#item2').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
     
-     $('.team_cont').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-
-
-            $('.item_img').each(function(k) {
-                var el = $(this);
-
-                setTimeout(function() {
-                    el.addClass('fadeInLeft animated');
-                }, k * 200, 'easeInOutExpo');
-
-            });
-
+           $('.item2_left').addClass('fadeInLeft animated');  
+           $('.item2_right').addClass('fadeInRight animated'); 
         }
     }, {
-        offset: '600px'
+        offset: '500px'
 
     });
-     $('.coopperate').waypoint(function(direction) {
+     $('#item3').waypoint(function(direction) {
 
         if (direction === 'down' && !$(this.element).hasClass('animated')) {
-
-
-            $('.cooper_item').each(function(k) {
-                var el = $(this);
-
-                setTimeout(function() {
-                    el.addClass('fadeInLeft animated');
-                }, k * 200, 'easeInOutExpo');
-
-            });
-
+           $('.item3_left').addClass('fadeInLeft animated');  
+           $('.item3_right').addClass('fadeInRight animated');
+          
         }
     }, {
-        offset: '600px'
+        offset: '700px'
 
     });
-     $('.news').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-
-
-            $('.news_item').each(function(k) {
-                var el = $(this);
-
-                setTimeout(function() {
-                    el.addClass('fadeInUp animated');
-                }, k * 200, 'easeInOutExpo');
-
-            });
-
-        }
-    }, {
-        offset: '600px'
-
-    });
-    //  $('.works').waypoint(function(direction) {
-
-    //     if (direction === 'down' && !$(this.element).hasClass('animated')) {
-
-
-    //         $('.works_item').each(function(k) {
-    //             var el = $(this);
-
-    //             setTimeout(function() {
-    //                 el.addClass('imgScale1 animated');
-    //             }, k * 300, 'easeInOutExpo');
-
-    //         });
-
-    //     }
-    // }, {
-    //     offset: '600px'
-
-    // });
     
 
 
 });
-
 
 </script>
 </body>

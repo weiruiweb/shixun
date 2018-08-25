@@ -45,7 +45,7 @@
                         <li class=""><a href="inedx.html">首页</a></li>
                         <li onmouseover="second_show1()">
                             <a href="product.html">产品中心</a></li>
-                        <li class="this_li" onmouseover="second_show1()">
+                        <li class="this_li" onmouseover="second_show2()">
                             <a href="case.html">行业案例</a>
                         </li>
                         <li>
@@ -58,217 +58,28 @@
             </div>
         </div>
        
-        <div class="menu_all" id="second_menu1">
+            <div class="menu_all" id="second_menu1" style="display: block">
                 <div class="nav_container">
-
-                        <ul class="menu">
-                            <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            
-                                <a href="#" >海洋海事  
-                                </a>
-                                <dl class="small_menu small_menus">
-                                    <dt ><a href="#">海洋海事</a></dt>  
-                                    <dt ><a href="#">海洋海事</a></dt>    
-                                    <dt ><a href="#">海洋海事</a></dt>      
-                                </dl>
-                            </li>
-                             <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)"> 
-                           
-                                <a href="#">高速公路 </a>
-                                 <dl class="small_menu small_menus">
-                                        <dt ><a href="#">高清视频...</a></dt> 
-                                        <dt ><a href="#">森林防火</a></dt>  
-                                </dl>
-                            </li>
-                              <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">边海防护</a>
-                                <dl class="small_menu">
-                                    <dt ><a href="#">边海防护</a></dt>
-                                    <dt ><a href="#">森林防火</a></dt>  
-                                    <dt ><a href="#">高铁防护</a></dt>       
-                                </dl>
-                            </li>
-                        </ul>
-                        <ul class="menu">
-                              <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">机场产品</a>
-                                <dl class="small_menu1">
-                                    <dt ><a href="#">电子围栏</a></dt>  
-                                    <dt ><a href="#">电子围栏</a></dt>   
-                                    <dt ><a href="#">电子围栏</a></dt>   
-                                    <dt ><a href="#">电子围栏</a></dt>     
-                                </dl>
-                            </li>
-                              <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">高铁产品</a>
-                                <dl class="small_menu">
-                                        <dt ><a href="#">高铁防护</a></dt> 
-                                        <dt ><a href="#">高铁防护</a></dt>   
-                                        <dt ><a href="#">高铁防护</a></dt>      
-                                    </dl>
-                            </li>
-                              <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">林业产品</a>
-                                <dl class="">
-                                    <dt ><a href="#">森林防火</a></dt>  
-                                        <dt ><a href="#">高铁防护</a></dt>   
-                                        <dt ><a href="#">高铁防护</a></dt>     
-                                </dl>
-                            </li>
-                        </ul>
-                        <ul class="menu" >
-                              <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">工业产品  
-                                </a>
-                                <dl>
-                                    <dt ><a href="#">工业测温</a></dt> 
-                                    <dt ><a href="#">森林防火</a></dt>      
-                                 </dl>
-                            </li>
-                             <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">工地产品</a>
-                                <dl class="small_menu">
-                                    <dt ><a href="#">工地检测</a></dt>    
-                                </dl>
-                            </li>
-                             <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">高点监控 </a>
-                                <dl class="small_menu">
-                                    <dt ><a href="#">高点监控</a></dt>
-                                   
-                                </dl>
-                            </li>
-                        </ul>
-
-                        <ul class="menu clear_ul">
-                             <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">高点监控</a>
-                                 <dl class="small_menu">
-                                    <dt ><a href="#">高点监控</a></dt>    
-                                    <dt ><a href="#">森林防火</a></dt>  
-                                    <dt ><a href="#">森林防火</a></dt>    
-                                </dl>
-                            </li>
-                             <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                                <a href="#">嵌入式板</a>
-                                <dl class="small_menu">
-                                    <dt ><a href="#">嵌入式板...</a></dt>    
-                                </dl>
-                            </li>
-                             <li>
-                                <a href="#">高点监控</a>
-                                 <dl class="small_menu">
-                                    <dt ><a href="#">高点监控</a></dt>   
-                                     <dt ><a href="#">森林防火</a></dt>  
-                                    <dt ><a href="#">高铁防护</a></dt>   
-                                </dl>
-                            </li>
-                        </ul>
-             
+                    <ul class="menu" v-if="labelData">
+                        <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-if="productMenu&&productMenu.child" v-for="item in productMenu.child"> 
+                            <a href="#" >{{item.title}}</a>
+                            <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoProductDetail">
+                                <dt ><a href="#" :data-id="item1.id" @click="intoProductDetail">{{item1.title}}</a></dt>       
+                            </dl>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        <div class="menu_all" id="second_menu2">
+        <div class="menu_all" id="second_menu2" >
             <div class="nav_container">
-
-                    <ul class="menu">
-                        <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                        
-                            <a href="#" >海洋海事  
-                            </a>
-                            <dl class="small_menu small_menus">
-                                <dt ><a href="#">海洋海事</a></dt>  
-                               
-                            </dl>
-                        </li>
-                         <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)"> 
-                       
-                            <a href="#">高速公路 </a>
-                             <dl class="small_menu small_menus">
-                                    <dt ><a href="#">高清视频...</a></dt> 
-                                    <dt ><a href="#">森林防火</a></dt>  
-                            </dl>
-                        </li>
-                          <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">边海防护</a>
-                            <dl class="small_menu">
-                                <dt ><a href="#">边海防护</a></dt>
-                            
-                            </dl>
-                        </li>
-                    </ul>
-                    <ul class="menu">
-                          <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">机场产品</a>
-                            <dl class="small_menu1">
-                                <dt ><a href="#">电子围栏</a></dt>  
-                                <dt ><a href="#">电子围栏</a></dt>   
-                            
-                            </dl>
-                        </li>
-                          <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">高铁产品</a>
-                            <dl class="small_menu">
-                                    <dt ><a href="#">高铁防护</a></dt> 
-                                   
-                                </dl>
-                        </li>
-                          <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">林业产品</a>
-                            <dl class="">
-                                <dt ><a href="#">森林防火</a></dt>  
-                                    <dt ><a href="#">高铁防护</a></dt>   
-                                    <dt ><a href="#">高铁防护</a></dt>     
-                            </dl>
-                        </li>
-                    </ul>
-                    <ul class="menu" >
-                          <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">工业产品  
-                            </a>
-                            <dl>
-                                <dt ><a href="#">工业测温</a></dt> 
-                                <dt ><a href="#">森林防火</a></dt>      
-                             </dl>
-                        </li>
-                         <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">工地产品</a>
-                            <dl class="small_menu">
-                                <dt ><a href="#">工地检测</a></dt>    
-                            </dl>
-                        </li>
-                         <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">高点监控 </a>
-                            <dl class="small_menu">
-                                <dt ><a href="#">高点监控</a></dt>
-                               
-                            </dl>
-                        </li>
-                    </ul>
-
-                    <ul class="menu clear_ul">
-                         <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">高点监控</a>
-                             <dl class="small_menu">
-                                <dt ><a href="#">高点监控</a></dt>    
-                             
-                                <dt ><a href="#">森林防火</a></dt>    
-                            </dl>
-                        </li>
-                         <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">嵌入式板</a>
-                            <dl class="small_menu">
-                                <dt ><a href="#">嵌入式板...</a></dt>    
-                            </dl>
-                        </li>
-                         <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)">
-                            <a href="#">高点监控</a>
-                             <dl class="small_menu">
-    
-                                <dt ><a href="#">高铁防护</a></dt>   
-                            </dl>
-                        </li>
-                    </ul>
-         
+                <ul class="menu" v-if="labelData">
+                    <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-if="caseMenu&&caseMenu.child" v-for="item in caseMenu.child">
+                        <a href="#" >{{item.title}}</a>
+                        <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoCaseDetail">
+                            <dt ><a href="#" :data-id="item1.id" @click="intoCaseDetail">{{item1.title}}</a></dt>   
+                        </dl>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -324,13 +135,13 @@
                 <div class="case_left item1_left">
                     <img src="images/case3.png" class="img-responsive">
                     <h6 class="pro_h">边海防二代视频监控系统</h6>
-                        <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
+                    <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
                 </div>
                 <div class="case_right item1_right">
                     <img src="images/case4.png" class="img-responsive">
                     <div class="case_tlt">
                         <h6 class="pro_h">边海防二代视频监控系统</h6>
-                            <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
+                        <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
                     </div>
                 </div>
             </div>
@@ -417,6 +228,7 @@
                     return {
                         bannerData: [],
                         productData: [],
+                        labelData:[],
                         paginate: {
                             count: 0,
                             currentPage: 1,
@@ -424,30 +236,38 @@
                             is_page: true,
                         },
                         searchItem:{
-                            thirdapp_id: 18,
-                            menu_id: 269,
+                            thirdapp_id:59,
                         },
                         pageArray:[],
                         allPages:0,
                         linkPage:'',
+                        productMenu:{},
+                        caseMenu:{}
                     }
 
                 },
                 
                 created: function () {
 
-                    this.getArticleData();
+
                     this.getBannerData();
+                    this.getLabelData()
 
                 },
                 methods:{
 
-                    getArticleData() {
+                    getArticleData(isNew) {
                         var self = this;
                         var postData = window.base.cloneForm(self.paginate);
                         postData.searchItem = window.base.cloneForm(self.searchItem);
+                        console.log(window.base.GetRequest())
+                        if(window.base.GetRequest()&&window.base.GetRequest().id){
+                            postData.searchItem.menu_id = ['in',window.base.GetRequest().id];
+                        }else{
+                            postData.searchItem.menu_id = ['in',self.menu_array_two];
+                        };
                         var callback = (res)=>{
-                            self.productData = res.data;
+                            self.productData = res.info.data;
                             self.paginate['count'] = res.total;
                             window.base.computePageArr(self);
                         };
@@ -456,25 +276,64 @@
                     
 
                     getBannerData() {
-                        var self = this;
-                        
+                        var self = this;                    
                         var postData = {
                             count: 0,
                             currentPage: 1,
                             pagesize:6,
                             is_page:true,
                             searchItem:{
-                                thirdapp_id:18,
-                                id:420
+                                thirdapp_id:59,
+                                id:21
                             }
                         };
-
                         var callback = (res)=>{
-                            self.bannerData = res.data;
+                            self.bannerData = res.info.data[0];
                             console.log(self.bannerData)
                         };
                         window.base.articleList(postData,callback);
                     },
+
+
+                    getLabelData() {
+                        var self = this;
+                        var postData = window.base.cloneForm(self.paginate);
+                        postData.searchItem = {
+                            type:1
+                        };
+                        var callback = (res)=>{
+                            self.labelData = res.info.data;
+                            self.productMenu = window.base.findKeyFromArray(self.labelData,'title','产品中心')[0];
+                            var length=self.productMenu['child'].length;
+                            self.menu_array = [];
+                            for(var i=0;i<length;i++){  
+                                if(self.productMenu['child'][i]['child']){
+                                    var child_length = self.productMenu['child'][i]['child'].length;
+                                    for(var c_i=0;c_i<child_length;c_i++){
+                                        self.menu_array.push(self.productMenu['child'][i]['child'][c_i].id)
+                                    };
+                                };
+                            };
+
+                            self.caseMenu = window.base.findKeyFromArray(self.labelData,'title','行业案例')[0]; 
+                            var lengthTwo= self.caseMenu['child'].length;
+                            self.menu_array_two = [];
+                            for(var i=0;i<lengthTwo;i++){  
+                                if(self.caseMenu['child'][i]['child']){
+                                    var child_lengthTwo = self.caseMenu['child'][i]['child'].lengthTwo;
+                                    for(var c_i=0;c_i<child_length;c_i++){
+                                        self.menu_array_two.push(self.caseMenu['child'][i]['child'][c_i].id)
+                                    };
+                                };
+                            };
+
+
+                           
+                            self.getArticleData();
+                        };
+                        window.base.labelGet(postData,callback);
+                    },  
+
                     
 
                     changePage(e){
@@ -499,10 +358,21 @@
                         var self = this;
                         console.log(e);
                         self.linkPage = window.base.getDataSet(e).page;
-                        window.base.linkTo(self);
-                        
+                        window.base.linkTo(self);                
                     },
                     
+                    intoCaseDetail(e){
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href="./case.html?id="+art_id;
+                    },
+
+                    intoProductDetail(e){
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href="./product.html?id="+art_id;
+                    },
+
                     intoDetail(e){
                         var self = this;
                         var art_id = window.base.getDataSet(e).id;
@@ -511,6 +381,28 @@
 
                 }
             });
+
+
+
+        $("#second_menu1").hover(function(){
+
+         
+                $(this).show();
+               
+                    },function(){
+                $(this).hide();
+        
+            
+        });
+        $("#second_menu2").hover(function(){
+           
+                $(this).show();
+               
+                    },function(){
+                $(this).hide();
+           
+        })
+
 
 </script>
 <script type="text/javascript">

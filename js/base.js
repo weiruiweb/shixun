@@ -145,6 +145,16 @@ window.base={
     getDataSet:function(e) {   
         return e.target.dataset; 
     },
+
+    findKeyFromArray:function(Array,key,value) {  
+        var new_array = []; 
+        for (var i = 0; i < Array.length; i++) {
+            if(Array[i][key]&&Array[i][key] == value){
+                new_array.push(Array[i])
+            };
+        };
+        return new_array; 
+    },
     
     GetRequest:function() {  
        var url = location.search; //获取url中"?"符后的字串  

@@ -61,80 +61,25 @@
             </div>
         </div>
         
-        <div class="" id="second_menu1">
+        <div class="menu_all" id="second_menu1" style="display: block">
+                <div class="nav_container">
+                    <ul class="menu" v-if="labelData">
+                        <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-for="item in labelData[2].child"> 
+                            <a href="#" >{{item.title}}</a>
+                            <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoProductDetail">
+                                <dt ><a href="#" :data-id="item1.id" @click="intoProductDetail">{{item1.title}}</a></dt>       
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <div class="menu_all" id="second_menu2">
             <div class="nav_container">
                 <ul class="menu">
-                   
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#" >边海防护</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">边海防护</a></dt>
-                            <dt ><a href="#">森林防火</a></dt>  
-                            <dt ><a href="#">高铁防护</a></dt>       
-                        </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">机场产品</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">电子围栏</a></dt>    
-                        </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高铁产品</a>
-                        <dl>
-                                <dt ><a href="#">高铁防护</a></dt> 
-                                <dt ><a href="#">高铁防护</a></dt>   
-                                <dt ><a href="#">高铁防护</a></dt>      
-                            </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">林业产品</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">森林防火</a></dt>  
-                                <dt ><a href="#">高铁防护</a></dt>   
-                                <dt ><a href="#">高铁防护</a></dt>     
-                        </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">工业产品  
-                        </a>
-                        <dl>
-                            <dt ><a href="#">工业测温</a></dt> 
-                            <dt ><a href="#">森林防火</a></dt>      
-                         </dl>
-                    </li>
-                     <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">工地产品</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">工地检测</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高点监控 </a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">高点监控</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高点监控</a>
-                         <dl class="small_menu">
-                            <dt ><a href="#">高点监控</a></dt>    
-                            <dt ><a href="#">森林防火</a></dt>  
-                            <dt ><a href="#">森林防火</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">嵌入式板</a>
-                        <dl class="small_menu">
-                            <dt ><a href="#">嵌入式板...</a></dt>    
-                        </dl>
-                    </li>
-                    <li onmouseover="menuShow()" onmouseout="menuHidden()">
-                        <a href="#">高点监控</a>
-                         <dl class="small_menu">
-                            <dt ><a href="#">高点监控</a></dt>   
-                             <dt ><a href="#">森林防火</a></dt>  
-                            <dt ><a href="#">高铁防护</a></dt>   
+                    <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-for="item in labelData[3].child">
+                        <a href="#" >{{item.title}}</a>
+                        <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoCaseDetail">
+                            <dt ><a href="#" :data-id="item1.id" @click="intoCaseDetail">{{item1.title}}</a></dt>                             
                         </dl>
                     </li>
                 </ul>
@@ -182,8 +127,8 @@
             </div>
             <div class="detail_right">
                 <div  class="detail_tlt">
-                    <p class="p1">边海防二代视频监控系统</p>
-                    <p class="p2">智能安防监控平台V1.2、用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2、用户体验优化搜索跟踪智能跳转智能安防监控平台V</p>
+                    <p class="p1">{{productData.title}}</p>
+                    <p class="p2">{{productData.description}}</p>
                 </div>
             </div>
         </div>
@@ -191,10 +136,7 @@
     <div class="detail_desc">
         <div class="description_tlt">产品信息</div>
         <div class="detail_cont">
-            <p class="p1">用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智</p>
-            <img  src="images/detail1.png" class="img-responsive">
-            <h5>边海防二代视频监控系统</h5>
-            <p class="p1">用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智能跳转智能安防监控平台V1.2用户体验优化搜索跟踪智</p>
+         <p class="p1" v-html="productData.content"></p>
         </div>
     </div>
     <div class="page">
@@ -216,16 +158,14 @@
                     return {
                         bannerData: [],
                         productData: [],
+                        labelData:[],
                         paginate: {
                             count: 0,
                             currentPage: 1,
                             pagesize: 6,
                             is_page: true,
                         },
-                        searchItem:{
-                            thirdapp_id: 18,
-                            menu_id: 269,
-                        },
+
                         pageArray:[],
                         allPages:0,
                         linkPage:'',
@@ -237,6 +177,7 @@
 
                     this.getArticleData();
                     this.getBannerData();
+                    this.getLabelData()
 
                 },
                 methods:{
@@ -244,9 +185,11 @@
                     getArticleData() {
                         var self = this;
                         var postData = window.base.cloneForm(self.paginate);
-                        postData.searchItem = window.base.cloneForm(self.searchItem);
+                        postData.searchItem = {
+                            id:window.base.GetRequest().id
+                        }
                         var callback = (res)=>{
-                            self.productData = res.data;
+                            self.productData = res.info.data[0];
                             self.paginate['count'] = res.total;
                             window.base.computePageArr(self);
                         };
@@ -254,22 +197,40 @@
                     },
                     
 
+                    getLabelData() {
+                        var self = this;
+                        var postData = window.base.cloneForm(self.paginate);
+                        postData.searchItem = {
+                            type:1
+                        };
+
+                        var callback = (res)=>{
+                            self.labelData = res.info.data;
+                            console.log(self.labelData);
+                            self.paginate['count'] = res.total;
+                            window.base.computePageArr(self);
+                        };
+                        window.base.labelGet(postData,callback);
+                    },  
+
+
+                    
+
                     getBannerData() {
                         var self = this;
-                        
                         var postData = {
                             count: 0,
                             currentPage: 1,
                             pagesize:6,
                             is_page:true,
                             searchItem:{
-                                thirdapp_id:18,
-                                id:420
+                                thirdapp_id:59,
+                                id:21
                             }
                         };
 
                         var callback = (res)=>{
-                            self.bannerData = res.data;
+                            self.bannerData = res.info.data[0];
                             console.log(self.bannerData)
                         };
                         window.base.articleList(postData,callback);
@@ -301,6 +262,19 @@
                         window.base.linkTo(self);
                         
                     },
+
+                     intoCaseDetail(e){
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href="./case.html?id="+art_id;
+                    },
+
+                    intoProductDetail(e){
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href="./product.html?id="+art_id;
+                    },
+
                     
                     intoDetail(e){
                         var self = this;
