@@ -2,21 +2,28 @@
 /*.col-xs-12,.col-sm-6,.col-md-8,.col-md-4{padding: 0px;}*/
 /*导航*/
 #up_icon{
-	width: 68%;
-	height: 35px;
+	width: 65%;
+	height: 34px;
 	padding:1px 0;
-	background: #fff;
+	background:rgba(153,153,153,0.5);
 	border-radius: 3px;
+	border:solid 1px #e0e0e0;
+	float: right;
+	margin-top:0.3rem;
 }
 .up_span{
 	margin-top: 3px;
 }
 #up_icon span{
 	width:100%;
-	height:2px;
+	height:1px;
 	display: block;
-	background: #111;
-	margin:10px 0;
+	background: #e0e0e0;
+	margin:7px 0;
+
+}
+.dropdown-menu{
+	border-radius: 0;
 }
 dl{
 	margin:0;
@@ -87,6 +94,9 @@ dl{
     transition: 0.2s;
     margin:0 0.19rem;
 }
+.navlist .btn{
+	font-size: 0.16rem;
+}
 
 .this_li{
 	background: #fe8532;
@@ -124,7 +134,9 @@ dl{
     text-align: center;
     white-space: nowrap;
 }
-
+.navlist>li dl dt a{
+	line-height: 34px;
+}
 
 
 
@@ -152,24 +164,27 @@ dl{
 	z-index: 999
 }
 #second_menu1{
-
+/*	display: none;*/
 	width:100%;
 	padding-bottom: 0.2rem;
 	position: absolute;
-	top:1rem;
+	top:0.98rem;
+	left:0;
 	background: rgba(0,0,0,0.8);
 	transition:all 1s;
 	z-index: 999;
 	transition: all 0.5s;
 	-webkit-transition:all 0.5s;
-	left:0;
+	
 	overflow:hidden;
 }
 #second_menu2{
+	/*display: none;*/
 	width: 100%;
 	padding-bottom: 0.2rem;
 	position: absolute;
-	top:1rem;
+	top:0.98rem;
+	left:0;
 	background: rgba(0,0,0,0.8);
 	transition:all 1s;
 	z-index: 999;
@@ -232,21 +247,18 @@ dl{
 }
 .menus{
 	float: left;
-
 	width: 100%;
 
-	overflow:hidden;
 }
 .menus a{
 	font-weight:normal;
 	color:#fff;
 }
 .menus li{
-
 	width:11.11%;
-
 	float: left;
 	text-align: center;
+
 }
 
 .menus li> a{
@@ -420,24 +432,35 @@ dl{
 	color: #fff;
 	line-height: 0.28rem;
 	margin-top: 0.25rem;
+	height:0.6rem;
+	overflow: hidden;
 }
 .second_process{
 	margin: 0.8rem 0;
 }
+.pageInto{
+	width:30px;
+	height:30px;
+	color: #fff;
+	position:absolute;
+	right:10px;
+	top:0;
+	z-index:99;
+	cursor:pointer;
+	display: none;
+}
 /**************case**************/
 .case{
-	position: relative;
 	height: 10.3rem;
 	width:100%;
 	background: url(../images/case_bg.jpg) no-repeat center center;
+	padding:0.6rem 0;
 }
 .case_cont{
 	width:82%;
 	text-align: center;
 	margin:0 auto;
-	position: absolute;
-	left:9%;
-	top:0;
+
 }
 .eng_tlt{
 	
@@ -446,14 +469,11 @@ dl{
 	color:#fe8532;
 /*	border-left: solid 1px #fe8532;*/
 }
-.case_cont .eng_tlt{
-	margin-top: 0.65rem;
-}
+
 .case_tlt{
 	font-size: .46rem;
 	color: #fff;
 	font-weight: normal;
-	margin-top: 0.18rem;
 	margin-bottom: 0.6rem;
 }
 .case1{
@@ -462,10 +482,16 @@ dl{
 	background: rgba(0,0,0,0.6);
 	margin-bottom: 0.3rem;
 	overflow: hidden;
+	min-height:3.5rem;
 }
 .case1_cont{
 	width:74%;
 	margin:0 auto;
+}
+.case1_cont span{
+	width:50%;
+	height:80%;
+	overflow: hidden;
 }
 .case1_right,.case1_left{
 	width: 50%;
@@ -497,6 +523,7 @@ dl{
 	color: #fff;
 	font-size: 0.24rem;
 	font-weight: normal;
+	margin-bottom:0.2rem;
 }
 .case1_cont span{
 	color: #fff;
@@ -513,8 +540,8 @@ dl{
 	overflow: hidden;
 }
 .product_tlt{
-	height: 2.5rem;
-	padding-top: 0.6rem;
+	height: 2.2rem;
+	padding-top: 0.5rem;
 	background: #222;
 	text-align: center;
 }
@@ -522,8 +549,19 @@ dl{
 .product_tlt .case_tlt{
 	margin-top:0.32rem;
 }
-.product_left{width: 61%;float: left;border-right: solid 0.1rem #222;position: relative;}
-.product_right{width: 39%;float: left;position: relative;}
+.product_left{
+	width: 61%;
+	float: left;
+	border-right: solid 0.1rem #222;
+	position: relative;
+	overflow: hidden;
+}
+.product_right{
+	width: 39%;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
 .product_cont{
 	border-bottom: solid 0.1rem #222;
 	overflow: hidden;
@@ -554,6 +592,9 @@ dl{
 	font-size: 0.14rem;
 	line-height: 0.3rem;
 	overflow: hidden;
+	height:60%;
+	width:100%;
+	white-space:normal;
 }
 .product_left1{
 	width: 34%;
@@ -727,7 +768,8 @@ dl{
 .product_des{
 	position: absolute;
 	top:0.9rem;
-	left:1.24rem;
+	width:80%;
+	left:10%;
 }
 
 .pro_h{
@@ -739,6 +781,7 @@ dl{
 	color: #fff;
 	margin-top: 0.24rem;
 	line-height: 0.28rem;
+	margin-right:0.4rem;
 }
 .product_des a{
 	width: 1.45rem;
@@ -806,9 +849,17 @@ dl{
 }
 .item4 .product_des{
 	left:4.5rem;
+	width:45%;
+	height:60%;
+	overflow: hidden;
 }
 .item4{
 	margin-bottom: 1.5rem;
+}
+.item4 .pro_p {
+	width:100%;
+	height:40%;
+	overflow: hidden;
 }
 /**************案例展示******************/
 .case_list{
@@ -932,7 +983,7 @@ dl{
 	margin-top:0.3rem;
 }
 .works_tlt .zh_tlt{
-	font-size: 0.44rem;
+	font-size: 0.32rem;
 	color: #fff;
 }
 .works_item{
@@ -1065,7 +1116,7 @@ dl{
 	text-align: center;
 }
 .title_all .zh_tlt{
-	font-size: 0.46rem;
+	font-size: 0.32rem;
 	color: #444;
 	text-align: center;
 }
@@ -1090,7 +1141,7 @@ dl{
 .news_item{
 	height:1.55rem;
 	padding:0.42rem 0.38rem 0.32rem 0.28rem;
-	border-bottom: solid 2px #bfbfbf;
+	border-bottom: solid 1px #bfbfbf;
 }
 .news_data{
 	float: left;
@@ -1173,9 +1224,10 @@ dl{
 .detail_right{
 	float: left;
 	width: 50%;
+	overflow: hidden;
 }
 .detail_right .p1{
-	font-size: 0.42rem;
+	font-size: 0.32rem;
 	color: #353535;
 	margin-bottom:0.8rem;
 }
@@ -1184,7 +1236,7 @@ dl{
 	margin-left: 1.52rem;
 }
 .detail{
-	margin-top: 3.48rem;
+	margin-top: 2.48rem;
 }
 .detail_desc{
 	clear: both;
@@ -1193,7 +1245,7 @@ dl{
 	top:1.42rem;
 }
 .description_tlt{
-	font-size:0.44rem;
+	font-size:0.32rem;
 	color:#545454;
 	text-align: center;
 }
@@ -1218,6 +1270,8 @@ dl{
 	color: #999;
 	font-size: 0.14rem;
 	line-height: 0.28rem;
+	height:40%;
+	overflow: hidden;
 }
 .detail_cont p{
 	text-align: 0.3rem;
