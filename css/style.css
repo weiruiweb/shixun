@@ -1,8 +1,28 @@
 /**************导航*****************/
 /*.col-xs-12,.col-sm-6,.col-md-8,.col-md-4{padding: 0px;}*/
 /*导航*/
+#up_icon{
+	width: 68%;
+	height: 35px;
+	padding:1px 0;
+	background: #fff;
+	border-radius: 3px;
+}
+.up_span{
+	margin-top: 3px;
+}
+#up_icon span{
+	width:100%;
+	height:2px;
+	display: block;
+	background: #111;
+	margin:10px 0;
+}
 dl{
 	margin:0;
+}
+.up_icon{
+	display: none;
 }
 .navs{
 	position:relative;
@@ -16,7 +36,7 @@ dl{
   	width:71%;
 	float: right;
 }
-.index_nav ul{
+.index_nav>ul{
 	overflow: hidden;
 	float: right;
 }
@@ -58,13 +78,12 @@ dl{
 }
 
 
-.navlist li {
+.navlist>li {
     float: left;
     line-height: 1rem;
    	width: 1.3rem;
    	text-align: center;
     font-size: 0.16rem;
-    position: relative;
     transition: 0.2s;
     margin:0 0.19rem;
 }
@@ -72,7 +91,7 @@ dl{
 .this_li{
 	background: #fe8532;
 }
-.navlist li:hover{
+.navlist>li:hover{
 	background: #fe8532;
 }
 .navlist >li{
@@ -83,7 +102,7 @@ dl{
 }
 
 
-.navlist li i {
+.navlist>li i {
     display: block;
     position: absolute;
     width: 0;
@@ -93,19 +112,12 @@ dl{
     left: 50%;
 }
 
-.navlist li dl {
-    position: absolute;
-    left: 0;
-    top: 0.56rem;
-    width: 1.26rem;
-    background: #fff;
-    display: none;
-    height:0;
-    transition: all 1s;
-    -webkit-transition:all 1s;
+.navlist>li dl {
+   color:#fff;
+
 }
 
-.navlist li dl dt {
+.navlist>li dl dt {
     height: 34px;
     line-height: 34px;
     font-size: 14px;
@@ -113,13 +125,8 @@ dl{
     white-space: nowrap;
 }
 
-.navlist>li:hover dl dt a {
-    color: #000;
-}
 
-.navlist>li:hover dl dt a:hover {
-    color: #28c885;
-}
+
 
 .navfull {
     width: 100%;
@@ -145,8 +152,7 @@ dl{
 	z-index: 999
 }
 #second_menu1{
-	display: none;
-<<<<<<< HEAD
+
 	width:100%;
 	padding-bottom: 0.2rem;
 	position: absolute;
@@ -156,30 +162,25 @@ dl{
 	z-index: 999;
 	transition: all 0.5s;
 	-webkit-transition:all 0.5s;
+	left:0;
+	overflow:hidden;
 }
 #second_menu2{
+	width: 100%;
+	padding-bottom: 0.2rem;
+	position: absolute;
+	top:1rem;
+	background: rgba(0,0,0,0.8);
+	transition:all 1s;
+	z-index: 999;
+
+	transition:all 1s;
+	-webkit-transition:all 1s;
+
+}
+#second_menu3{
 	display: none;
 	width: 100%;
-=======
-	width:0%;
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
-	padding-bottom: 0.2rem;
-	position: absolute;
-	top:1rem;
-	background: rgba(0,0,0,0.8);
-	transition:all 1s;
-	z-index: 999;
-<<<<<<< HEAD
-	transition:all 1s;
-	-webkit-transition:all 1s;
-}
-=======
-	transition: all 0.5s;
-	-webkit-transition:all 0.5s;
-}
-#second_menu2{
-	display: none;
-	width: 0%;
 	padding-bottom: 0.2rem;
 	position: absolute;
 	top:1rem;
@@ -189,7 +190,7 @@ dl{
 	transition:all 1s;
 	-webkit-transition:all 1s;
 }
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
+
 .menu_ul{
 	padding: 0 5%;
 	margin-top: 0.3rem;
@@ -197,11 +198,9 @@ dl{
 }
 .menu{
 	float: left;
-<<<<<<< HEAD
+
 	width: 100%;
-=======
-	width: 33.3%;
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
+
 	overflow:hidden;
 }
 .menu a{
@@ -209,17 +208,13 @@ dl{
 	color:#fff;
 }
 .menu li{
-<<<<<<< HEAD
+
 	width:11.11%;
-=======
-	width:33.33%;
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
+
 	float: left;
 	text-align: center;
 }
-.clear_ul{
-	clear: both;
-}
+
 .menu li> a{
 	font-size:0.2rem;
 	color: #fff;
@@ -231,6 +226,40 @@ dl{
 	-webkit-transition:all 1s;
 }
 .menu dl a{
+	font-size:0.16rem;
+	color: #fff;
+	line-height:0.6rem;
+}
+.menus{
+	float: left;
+
+	width: 100%;
+
+	overflow:hidden;
+}
+.menus a{
+	font-weight:normal;
+	color:#fff;
+}
+.menus li{
+
+	width:11.11%;
+
+	float: left;
+	text-align: center;
+}
+
+.menus li> a{
+	font-size:0.2rem;
+	color: #fff;
+	line-height:0.6rem;
+	border-bottom: solid 2px #fff;
+}
+.menus dl{
+	transition: all 1s;
+	-webkit-transition:all 1s;
+}
+.menus dl a{
 	font-size:0.16rem;
 	color: #fff;
 	line-height:0.6rem;

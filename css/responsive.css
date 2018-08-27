@@ -274,29 +274,34 @@
 
 
 @media (max-width: 768px) {
-	#second_menu{
-		top:2.6rem;
-	}	
+	
 	.nav_container{
 		width:100%;
 	}
 	.phone_logo{
 		margin-left:2%;
-		width:38%;
+		width:30%;
 	}
 	.search{
 		float: left;
-		margin-left: 10%;
-		width:47%;
+		margin-left: 2%;
+		width:40%;
 		margin-right: 3%;
 		height:0.8rem;
 		margin-top:0.2rem;
+	}
+	.up_icon{
+		width: 17%;
+		display: left;
+		display: inline-block;
+		text-align: right;
 	}
 	.search input{
 		height:0.78rem;
 		line-height: 0.7rem;
 	}
 	.index_nav{
+		/*display: none;*/
 		margin-top: 0.5rem;
 		float: left;
 		width: 100%;
@@ -307,9 +312,8 @@
 		width:100%;
 	}
 	.index_nav li{
-		width:20%;
-		display:inline-block;
-		margin:0px 2.5%;
+		width:100%;
+		margin:0;
 		font-size:0.24rem;
 	}
 	.banner img{
@@ -326,26 +330,16 @@
 		margin-bottom: 0.2rem;
 		
 	}
-	.menu li a{
+	.menu_all li a{
 		font-size:14px;
 		line-height:0.65rem;
 	}
-	.menu dl a{
+	.nav_container dl a{
 		font-size: 12px;
 		line-height:0.4rem;
 	}
-	#second_menu{
-		/*height: 5rem;*/
-		top:2.6rem;
-	}
-	#second_menu1{
-	/*	height: 5rem;*/
-		top:2.6rem;
-	}
-	#second_menu2{
-
-		top:2.6rem;
-	}
+	
+	
 	.carousel-indicators{
 		left:88%;
 	}
@@ -444,7 +438,6 @@
 		display: none;
 	}
 	.video{
-		padding-left:0.5rem;
 		min-height:16rem;
 	}
 	.video_left{text-align: center;}
@@ -479,23 +472,39 @@
 	.pro_h{
 		font-size:0.32rem;
 	}
-	.menu dl{
-		display: none;
-	}
+	
 	.team{
 		margin:1rem 0;
 	}
 	.team_cont{
 		margin:1rem auto;
 	}
-<<<<<<< HEAD
-	.menu ul{
-		width: 25%;
-		float: left;
+	
+	.menu_all dl{
+		display: none;
 	}
-=======
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
-}
+	#second_menu1{
+		position: relative;
+		top: 0;
+		/*display: none;*/
+	}
+	#second_menu1{
+		position: relative;
+		top: 0;
+		/*display: none;*/
+	}
+
+	.dropdown-menu{
+		position: relative;
+	}
+	.menu li> a{
+		display: block;
+		width:100%;
+		border-bottom: solid 1px #fff;
+	}
+	
+	}
+
 @media(min-width:480px ) and (max-width:767px){
 	.product_left,.product_right{
 		width: 100%;
@@ -509,31 +518,12 @@
 	.title_all .eng_tlt{
 		width: 3.4rem;
 	}
-<<<<<<< HEAD
-	
-=======
-	.menu{
-		width: 25%;
-	}
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
+
 	.menu li{
 		float:none;
 		width: 100%;
 	}
-<<<<<<< HEAD
-	
 
-=======
-	.clear_ul{
-		clear: none;
-	}
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
-	#second_menu1{
-		top:3.1rem;
-	}
-	#second_menu2{
-		top:3.1rem;
-	}
 	.team_cont{
 		width: 100%;
 	}
@@ -543,21 +533,8 @@
 	#second_menu{
 		top:3.1rem;
 	}	
-	.search{
-		margin-top: 0.5rem;
-		width: 48%;
-		margin-right: 2%;
-<<<<<<< HEAD
-=======
-	}
-	.menu{
-		width: 25%;
-	}
-	.menu{
-		float: left;
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
-	}
-	.menu li{
+	
+	.menu_all li{
 		float: none;
 		width:100%;
 		margin-bottom: 0.5rem;
@@ -573,37 +550,22 @@
 		color:#fff;
 	}
 	.menu dl{
-		display: none;
+		
 		margin-top: 0.4rem;
-		/*position:absolute;
-		top:0;
-		left:80%;
-		background: #fff;
-		width:80%;
-		height:auto;
-		z-index: 999;*/
+		
 	}
-	.menu dl a{
+	.nav_container dl a{
 		height: 0.8rem;
 		line-height: 0.8rem;
 	}
 	#second_menu1{
 		/*height: 5.3rem;*/
-<<<<<<< HEAD
-		top:3.1rem;
 		padding-bottom: 0.6rem;
 	}
+	
 	#second_menu2{
-		top:3.1rem;
 		padding-bottom: 0.6rem;
-=======
-		top:3.1rem;
-		padding-bottom: 0.6rem;
-	}
-	#second_menu2{
-		top:3.1rem;
-		padding-bottom: 0.6rem;
->>>>>>> 0964615faa10c5aa778aa0a5bab90712a3776d49
+
 	}
 	.carousel-indicators{
 		left:88%;
@@ -729,7 +691,6 @@
 		padding:0.5rem;
 	}
 	.video{
-		padding-left:0.3rem;
 		min-height:20rem;
 	}
 	.pro_h{
@@ -738,6 +699,18 @@
 	.team_cont{
 		width: 100%;
 	}
-	
-
+	.menu ul{
+		width:25%;
+		float: left;
+	}
+	.menu ul li{
+		width:100%;
+	}
+	.menus ul{
+		width:25%;
+		float: left;
+	}
+	.menus ul li{
+		width:100%;
+	}
 }
