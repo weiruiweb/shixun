@@ -1,6 +1,9 @@
 /**************导航*****************/
 /*.col-xs-12,.col-sm-6,.col-md-8,.col-md-4{padding: 0px;}*/
 /*导航*/
+.opacity_all{
+	display: none;
+}
 #up_icon{
 	width: 65%;
 	height: 34px;
@@ -281,7 +284,6 @@ dl{
 .carousel-indicators{
 	position:absolute;
 	top:30%;
-
 	width:0.9rem;
 	left:95%;
 	margin: 0px;
@@ -300,6 +302,13 @@ dl{
 	background: #fe8532;
 	border:none;
 	margin:0px;
+}
+.banner{
+	height: 9rem;
+	overflow: hidden;
+}
+.banner img{
+	height:9rem;
 }
 .banner_rightTxt{
 	position: absolute;
@@ -488,10 +497,11 @@ dl{
 	width:74%;
 	margin:0 auto;
 }
-.case1_cont span{
+.case1_cont .case1_left{
 	width:50%;
 	height:80%;
 	overflow: hidden;
+	display: block;
 }
 .case1_right,.case1_left{
 	width: 50%;
@@ -525,7 +535,9 @@ dl{
 	font-weight: normal;
 	margin-bottom:0.2rem;
 }
-.case1_cont span{
+.case1_cont .span{
+	width:100%;
+	overflow: hidden;
 	color: #fff;
 	font-size: 0.16rem;
 
@@ -536,8 +548,12 @@ dl{
 	position: relative;
 	top:0;
 }
+.product_cont {
+	overflow: hidden;
+}
 .product_cont1{
 	overflow: hidden;
+
 }
 .product_tlt{
 	height: 2.2rem;
@@ -553,13 +569,13 @@ dl{
 	width: 61%;
 	float: left;
 	border-right: solid 0.1rem #222;
-	position: relative;
+	/*position: relative;*/
 	overflow: hidden;
 }
 .product_right{
 	width: 39%;
 	float: left;
-	position: relative;
+	/*position: relative;*/
 	overflow: hidden;
 }
 .product_cont{
@@ -1140,7 +1156,7 @@ dl{
 }
 .news_item{
 	height:1.55rem;
-	padding:0.42rem 0.38rem 0.32rem 0.28rem;
+	padding:0.35rem 0.38rem 0.35rem 0.28rem;
 	border-bottom: solid 1px #bfbfbf;
 }
 .news_data{
@@ -1149,6 +1165,7 @@ dl{
 	padding-right:3%;
 	text-align: center;
 	color:#999;
+	overflow: hidden;
 }
 .news_desc{
 	float: right;

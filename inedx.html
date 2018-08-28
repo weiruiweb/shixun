@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>视讯科技</title>
     <!-- custom-theme -->
@@ -40,7 +39,7 @@
                     v-for="(item, index) in menu"
                     
                 >
-                    <div style="width:100%;height:20px;border: 1px gray solid"
+                    <div style="width:100%;height:20px;border: 1px gray solid" id="remove_class"
                     :data-show_id="item.id"  
                     @click="toggleMenu"
                     >
@@ -51,7 +50,7 @@
                         <div 
                         style="width:100%;height:20px;border: 1px gray solid"
                         :data-show_child_id="c_item.id"  
-                        @click="toggleMenu"
+                        @click="toggleMenu" id="remove_class"
                         >
                             {{c_item.title}}
                         </div>
@@ -59,7 +58,7 @@
                             v-if="show_child_id==c_item.id&&c_item.child" 
                             v-for="(cc_item, cc_index) in c_item.child"    
                         >
-                            <div style="width:100%;height:20px;border: 1px gray solid">
+                            <div style="width:100%;height:20px;border: 1px gray solid" id="remove_class">
                                 {{cc_item.title}}
                             </div>
                         </div>
@@ -303,10 +302,10 @@
             </div>
         </header>
         <div class="banner">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div id="carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" class="active"></li>
-                    <li data-target="#carousel-example-generic"></li>
+                    <li data-target="#carousel" class="active"></li>
+                    <li data-target="#carousel"></li>
                 </ol>
                 <div class="banner_rightTxt">
                     <span>SHI XUN KE JI</span>
@@ -387,13 +386,14 @@
                     <div class="case1_cont" v-if="caseData[0]&&caseData[0].mainImg">
                         <div class="case1_left caseLeft">
                             <p>{{caseData[0].keywords}}</p>
-                            <span>{{caseData[0].description}}</span>
+                            <div class="span">{{caseData[0].description}}</div>
                         </div>
                         <div class="case1_right caseRight">
                             <img :src="caseData[0].mainImg[0].url" class="img-responsive">
                         </div>
                     </div>
                 </div>
+
                 <div class="case1">
                     <div class="case1_cont" v-if="caseData[1]&&caseData[1].mainImg">
                         <div class="case1_right case2_left caseLeft">
@@ -401,7 +401,7 @@
                         </div>
                         <div class="case1_left caseRight">
                             <p>{{caseData[1].keywords}}</p>
-                            <span>{{caseData[1].description}}</span>
+                            <div class="span">{{caseData[1].description}}</div>
                         </div>
                     </div>
                 </div>
@@ -485,7 +485,7 @@
     <script src="js/jquery.stellar.js" type="text/javascript"></script>
     <script src="js/jquery.easing.min.js" type="text/javascript"></script>
     <script src="js/jquery.waypoints.min.js"></script>
-    <script type="text/javascript">
+    <script type="text/babel">
     var app = new Vue({
         el: '#app',
         data: function() {
@@ -768,28 +768,16 @@
     })
     </script>
     <script type="text/javascript">
-    // $(window).resize(function(){  
-    //   window.location.reload(); //刷新当前页面  
-    // });
+    
+    window.onload = function () {
+        $(".banner").css("height","auto");
+        $(".opacity_all").css("display","block");
+        
+
+    };
     </script>
     <script type="text/javascript">
-    // var w=$(window).width();
-    //   if(w>768){
-    //       var li = $('.menu li'); //获取这12个标签；
-    //       for (var i = 0; i<3; i++) {
-    //           var ul = $('<ul>'); //创建ul
-    //           ul.append(li.eq(i*3));
-    //           ul.append(li.eq(i*3+1));
-    //           $('.menu').append(ul);
-    //       }
-    //       var li = $('.menus li'); //获取这12个标签；
-    //       for (var i = 0; i<3; i++) {
-    //           var ul = $('<ul>'); //创建ul
-    //           ul.append(li.eq(i*3));
-    //           ul.append(li.eq(i*3+1));
-    //           $('.menus').append(ul);
-    //       }
-    //   }
+   
     </script>
 </body>
 
