@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta name="baidu-site-verification" content="z8EeuYl0nS" />
+    <meta name="keywords" content="视讯科技">
+    <meta name="description" content="视讯科技">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/basic.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all" />
+    
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript " src="js/bootstrap.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/base.js" type="application/javascript"></script>
+</head>
+<body>
+    
+    <div id="app" style="width:100%">
+
+        <div class="navs">
+           <div class="navbox">
+                <div class="nav_container">
+                    <a class="phone_logo" href="inedx.html"><img src="images/logo.png" class="img-responsive"></a>
+                    <div class="search">
+                        <input type="text" placeholder="请输入关键字" />
+                        <div class="search_btn">
+                         <img src="images/seach.png" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="index_nav">
+                         <ul class="navlist fix" id="phone_navlist">
+                            <li class=""><a href="inedx.html">首页</a></li>
+                            <li class="this_li this_li1">
+                                <a href="product.html" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="">产品中心<span class="caret"></span></a>
+                                <div class="pageInto menuInto">→</div>
+                                <div class="menu_all dropdown-menu" id="second_menu1"  role="menu" aria-labelledby="dropdownMenu1" data-stopPropagation="true">
+                                    <div class="nav_container">
+                                        <ul class="menu" v-if="labelData">
+                                            <li v-if="productMenu&&productMenu.child" v-for="item in productMenu.child"> 
+                                                <a href="#" >{{item.title}}</a>
+                                                <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoProductDetail">
+                                                    <dt ><a href="#" :data-id="item1.id" @click="intoProductDetail">{{item1.title}}</a></dt>       
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="this_li2"  class="btn dropdown-toggle" id="dropdownMenu2" data-toggle="">
+                                <a href="case.html">行业案例<span class="caret"></span></a>
+                                <div class="pageInto menuInto1">→</div>
+                                <div class="menu_all dropdown-menu" id="second_menu2"  role="menu" aria-labelledby="dropdownMenu2"  data-stopPropagation="true">
+                                    <div class="nav_container">
+                                        <ul class="menu" v-if="labelData">
+                                            <li v-if="caseMenu&&caseMenu.child" v-for="item in caseMenu.child">
+                                                <a href="#" >{{item.title}}</a>
+                                                <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoCaseDetail">
+                                                    <dt ><a href="#" :data-id="item1.id" @click="intoCaseDetail">{{item1.title}}</a></dt>   
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li >
+                                <a href="about.html">关于我们</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                
+            
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="phone">
+            <button  @click="toggleMenu">
+                menu
+            </button>
+            <header style="position: absolute;z-index: 99;width:100%">
+                
+                
+                    <div class="orgin"  :class="(is_show?'after':'')" >
+                        <div style="width:100%;border: 1px gray solid"
+                            v-for="(item, index) in menu"
+                        >
+                            <div style="width:100%;height:20px;border: 1px gray solid;color: white"
+                            :data-show_id="item.id"  
+                            @click="toggleMenu"
+                            >
+                                {{item.title}}
+                            </div>
+                            
+                            <div 
+                            class="orgin"  :class="(show_id==item.id&&item.child?'after':'')"
+                            v-for="(c_item, c_index) in item.child" 
+                            >
+                                <div 
+                                style="width:100%;height:20px;border: 1px gray solid;color: white"
+                                :data-show_child_id="c_item.id"  
+                                @click="toggleMenu"
+                                >
+                                    {{c_item.title}}
+                                </div>
+                                <div
+                                    v-show="show_child_id==c_item.id&&c_item.child" 
+                                    class="orgin"  :class="(show_child_id==c_item.id&&c_item.child?'after':'')"
+                                    v-for="(cc_item, cc_index) in c_item.child"    
+                                >
+                                    <div style="width:100%;height:20px;border: 1px gray solid;color: white">
+                                        {{cc_item.title}}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+                
+            </header>
+        </div>
+        
+    </div>
+    
+</body>
+<style >
+    .orgin{
+        width:100%;
+        opacity: 0;
+        height: 0;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height .5s ease-out;
+    }
+    .after{
+
+        opacity: 1;
+        max-height: 1000px;
+        height: auto;
+        max-height: 250px;
+        -webkit-animation: slide-down .5s ease-in;
+        transition: max-height .5s ease-in;
+        transform-origin: 50% 0;
+    }
+
+    @-webkit-keyframes slide-down{
+        0%{transform: scale(1,0);}
+        25%{transform: scale(1,1.2);}
+        50%{transform: scale(1,0.85);}
+        75%{transform: scale(1,1.05);}
+        100%{transform: scale(1,1);}
+    }
+</style>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                bannerData: [],
+                productData: [],
+                caseData: [],
+                labelData: [],
+                paginate: {
+                    count: 0,
+                    currentPage: 1,
+                    pagesize: 6,
+                    is_page: true,
+                },
+                searchItem: {
+                    thirdapp_id: 59,
+                    menu_id: 385,
+                },
+                show_id:'',
+                show_child_id:'',
+                is_show:false,
+                pageArray: [],
+                allPages: 0,
+                linkPage: '',
+                productMenu:[],
+                caseMenu:[],
+                menu:[]
+            }
+
+        },
+
+        created: function() {
+            this.getMainData();
+        },
+        methods: {
+
+            toggleMenu(e){
+                var self = this;
+                
+                var dataSet = window.base.getDataSet(e);
+                console.log(dataSet);
+                if(dataSet.show_id){
+                    if(self.show_id==dataSet.show_id){
+                        self.show_id = '';
+                    }else{
+                        self.show_id = dataSet.show_id;
+                    };
+                }else if(dataSet.show_child_id){
+                    if(self.show_child_id==dataSet.show_child_id){
+                        self.show_child_id = '';
+                    }else{
+                        self.show_child_id = dataSet.show_child_id;
+                    };
+                }else{
+                    console.log(111)
+                    self.is_show = !self.is_show;
+                };
+                
+                console.log(self.is_show)
+            },
+
+
+
+            getMainData() {
+                var self = this;
+                var postData = {
+                    searchItem:{
+                        thirdapp_id: 59,
+                    }
+                };
+                var callback = (res) => {
+                    console.log(res);
+                    self.menu = res.info.data;
+                    self.productMenu = window.base.findKeyFromArray(self.menu,'title','产品中心')[0];
+                    console.log(self.productMenu)
+                    var length=self.productMenu['child'].length;
+                    self.menu_array = [];
+                    for(var i=0;i<length;i++){  
+                        if(self.productMenu['child'][i]['child']){
+                            var child_length = self.productMenu['child'][i]['child'].length;
+                            for(var c_i=0;c_i<child_length;c_i++){
+                                self.menu_array.push(self.productMenu['child'][i]['child'][c_i].id)
+                            };
+                        };
+                    };
+
+                    self.caseMenu = window.base.findKeyFromArray(self.menu,'title','行业案例')[0]; 
+                    var lengthTwo= self.caseMenu['child'].length;
+                    self.menu_array_two = [];
+                    for(var i=0;i<lengthTwo;i++){  
+                        if(self.caseMenu['child'][i]['child']){
+                            var child_lengthTwo = self.caseMenu['child'][i]['child'].lengthTwo;
+                            for(var c_i=0;c_i<child_length;c_i++){
+                                self.menu_array_two.push(self.caseMenu['child'][i]['child'][c_i].id)
+                            };
+                        };
+                    };
+                };
+                window.base.labelGet(postData, callback);
+            },
+
+            intoCaseDetail(e){
+                var self = this;
+                var art_id = window.base.getDataSet(e).id;
+                window.location.href="./case.html?id="+art_id;
+            },
+
+            intoProductDetail(e){
+                var self = this;
+                var art_id = window.base.getDataSet(e).id;
+                window.location.href="./product.html?id="+art_id;
+            },
+
+            
+
+        }
+    });
+
+</script>
+</html>
+
+
+
+

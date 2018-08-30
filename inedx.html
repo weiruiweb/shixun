@@ -20,6 +20,7 @@
     <script src="js/browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/base.js" type="application/javascript"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <style>
     .dropup,
     .dropdown {
@@ -29,6 +30,12 @@
 </head>
 
 <body>
+    <div class="configHead"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.configHead').load('./header.html');
+        });
+    </script>
     <div id="app">
         <header>
             <button  @click="toggleMenu">
@@ -329,11 +336,10 @@
             </div>
         </div>
         <div class="video">
-            <!-- <img src="images/video_bg.jpg" class="img-responsive video_bg"> -->
             <div class="video_cont">
                 <div class="video_left">
                     <video loop="true">
-                        <source src="media/1.mp4" type="video/mp4" style="width:800px;height:100%;">
+                        <!-- <source src="media/1.mp4" type="video/mp4" style="width:800px;height:100%;"> -->
                     </video>
                 </div>
                 <div class="video_right">
@@ -478,7 +484,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript " src="js/bootstrap.js"></script>
     <script src="js/my.js"></script>
     <script src="js/rem.js"></script>
@@ -708,77 +713,15 @@
 
         }
     });
-
-
-
-    var w = $(window).width();
-    if (w > 768) {
-
-
-        $("#second_menu1").hover(function() {
-            $(this).show();
-        }, function() {
-            $(this).hide();
-        });
-        $("#second_menu2").hover(function() {
-            $(this).show();
-
-        }, function() {
-            $(this).hide();
-        })
-
-
-        $(".this_li1").hover(function() {
-            $("#second_menu1").show();
-            $("#second_menu2").hide();
-
-        });
-
-        $(".this_li2").hover(function() {
-            $("#second_menu2").show();
-            $("#second_menu1").hide();
-        });
-
-    }
-
-    if (w <= 768) {
-        $(".menu li").click(function() {
-            $(".menu dl").hide();
-            $(this).find("dl").toggle();
-        })
-        $(".this_li1 a").attr("data-toggle", "dropdown");
-        $(".this_li2 a").attr("data-toggle", "dropdown")
-    }
-
-    $("#up_icon").click(function() {
-        $(".index_nav").toggle();
-    });
-
-    $(".menu li:eq(9)").css("clear", "both");
-    $(".menu_case li:eq(9)").css("clear", "both");
-
-    $("body").on('click', '[data-stopPropagation]', function(e) {
-        e.stopPropagation();
-    });
-    $(".menuInto").click(function() {
-        window.location.href = 'product.html';
-    })
-    $(".menuInto1").click(function() {
-        window.location.href = 'case.html';
-    })
     </script>
     <script type="text/javascript">
     
     window.onload = function () {
         $(".banner").css("height","auto");
-        $(".opacity_all").css("display","block");
-        
-
     };
+
     </script>
-    <script type="text/javascript">
-   
-    </script>
+
 </body>
 
 </html>
