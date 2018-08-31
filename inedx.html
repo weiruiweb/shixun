@@ -38,276 +38,7 @@
     </script>
     <div id="app">
         <header>
-            <button  @click="toggleMenu">
-                menu
-            </button>
-            <div v-if="is_show">
-                <div style="width:100%;border: 1px gray solid"
-                    v-for="(item, index) in menu"
-                    
-                >
-                    <div style="width:100%;height:20px;border: 1px gray solid" id="remove_class"
-                    :data-show_id="item.id"  
-                    @click="toggleMenu"
-                    >
-                        {{item.title}}
-                    </div>
-                    
-                    <div v-if="show_id==item.id&&item.child" v-for="(c_item, c_index) in item.child" >
-                        <div 
-                        style="width:100%;height:20px;border: 1px gray solid"
-                        :data-show_child_id="c_item.id"  
-                        @click="toggleMenu" id="remove_class"
-                        >
-                            {{c_item.title}}
-                        </div>
-                        <div
-                            v-if="show_child_id==c_item.id&&c_item.child" 
-                            v-for="(cc_item, cc_index) in c_item.child"    
-                        >
-                            <div style="width:100%;height:20px;border: 1px gray solid" id="remove_class">
-                                {{cc_item.title}}
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-
-            </div>
-            <div class="navs">
-                <div class="navbox">
-                    <div class="nav_container">
-                        <a class="phone_logo"><img src="images/logo.png" class="img-responsive"></a>
-                        <div class="search">
-                            <input type="text" placeholder="请输入关键字" />
-                            <div class="search_btn">
-                                <img src="images/seach.png" class="img-responsive">
-                            </div>
-                        </div>
-                        <div class="up_icon" data-id="123">
-                            <div id="up_icon">
-                                <div class="up_span">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="sindex_nav">
-                            <ul class="navlist fix" id="phone_navlist">
-                                <li class="this_li"><a href="inedx.html">首页</a></li>
-                                <li class="this_li1">
-                                    <a href="product.html" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="">产品中心<span class="caret"></span>
-                            </a>
-                                    <div class="pageInto menuInto">→</div>
-                                    <div class="menu_all dropdown-menu" id="second_menu1" role="menu" aria-labelledby="dropdownMenu1" data-stopPropagation="true">
-                                        <div class="nav_container">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="#">海洋海事  
-                                            </a>
-                                                    <dl class="small_menu small_menus">
-                                                        <dt><a href="#">海洋海事</a></dt>
-                                                        <dt><a href="#">海洋海事</a></dt>
-                                                        <dt><a href="#">海洋海事</a></dt>
-                                                    </dl>
-                                                </li>
-                                                <li>
-                                                    <a href="#">高速公路 </a>
-                                                    <dl class="small_menu small_menus">
-                                                        <dt><a href="#">高清视频...</a></dt>
-                                                        <dt><a href="#">森林防火</a></dt>
-                                                        <dt><a href="#">高清视频...</a></dt>
-                                                    </dl>
-                                                </li>
-                                                <li>
-                                                    <a href="#">边海防护</a>
-                                                    <dl class="small_menu">
-                                                        <dt><a href="#">边海防护</a></dt>
-                                                        <dt><a href="#">森林防火</a></dt>
-                                                        <dt><a href="#">高铁防护</a></dt>
-                                                    </dl>
-                                                    <li>
-                                                        <a href="#">机场产品</a>
-                                                        <dl class="small_menu1">
-                                                            <dt><a href="#">电子围栏</a></dt>
-                                                            <dt><a href="#">电子围栏</a></dt>
-                                                            <dt><a href="#">电子围栏</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">高铁产品</a>
-                                                        <dl class="small_menu">
-                                                            <dt><a href="#">高铁防护</a></dt>
-                                                            <dt><a href="#">高铁防护</a></dt>
-                                                            <dt><a href="#">高铁防护</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">林业产品</a>
-                                                        <dl class="">
-                                                            <dt><a href="#">森林防火</a></dt>
-                                                            <dt><a href="#">高铁防护</a></dt>
-                                                            <dt><a href="#">高铁防护</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">工业产品  
-                                            </a>
-                                                        <dl>
-                                                            <dt><a href="#">工业测温</a></dt>
-                                                            <dt><a href="#">森林防火</a></dt>
-                                                            <dt><a href="#">工业测温</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">工地产品</a>
-                                                        <dl class="small_menu">
-                                                            <dt><a href="#">工地检测</a></dt>
-                                                            <dt><a href="#">工地检测</a></dt>
-                                                            <dt><a href="#">工地检测</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">高点监控 </a>
-                                                        <dl class="small_menu">
-                                                            <dt><a href="#">高点监控</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">高点监控</a>
-                                                        <dl class="small_menu">
-                                                            <dt><a href="#">高点监控</a></dt>
-                                                            <dt><a href="#">森林防火</a></dt>
-                                                            <dt><a href="#">森林防火</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">嵌入式板</a>
-                                                        <dl class="small_menu">
-                                                            <dt><a href="#">嵌入式板...</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">高点监控</a>
-                                                        <dl class="small_menu">
-                                                            <dt><a href="#">高点监控</a></dt>
-                                                            <dt><a href="#">森林防火</a></dt>
-                                                            <dt><a href="#">高铁防护</a></dt>
-                                                        </dl>
-                                                    </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    </li>
-                                    <li class="this_li2">
-                                        <a href="case.html" class="btn dropdown-toggle" id="dropdownMenu2" data-toggle=""> 行业案例<span class="caret"></span></a>
-                                        <div class="pageInto menuInto1">→</div>
-                                        <div class="menu_all dropdown-menu" id="second_menu2" role="menu" aria-labelledby="dropdownMenu2" data-stopPropagation="true">
-                                            <div class="nav_container">
-                                                <ul class="menu menu_case">
-                                                    <li>
-                                                        <a href="detail.html">海洋海事  
-                                            </a>
-                                                        <dl class="small_menu small_menus">
-                                                            <dt><a href="detail.html">海洋海事</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">高速公路 </a>
-                                                        <dl class="small_menu small_menus">
-                                                            <dt><a href="detail.html">高清视频...</a></dt>
-                                                            <dt><a href="detail.html">森林防火</a></dt>
-                                                            <dt><a href="detail.html">高清视频...</a></dt>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">边海防护</a>
-                                                        <dl class="small_menu">
-                                                            <dt><a href="#">边海防护</a></dt>
-                                                            <dt><a href="#">森林防火</a></dt>
-                                                            <dt><a href="#">高铁防护</a></dt>
-                                                        </dl>
-                                                        <li>
-                                                            <a href="#">机场产品</a>
-                                                            <dl class="small_menu1">
-                                                                <dt><a href="#">电子围栏</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">高铁产品</a>
-                                                            <dl class="small_menu">
-                                                                <dt><a href="#">高铁防护</a></dt>
-                                                                <dt><a href="#">高铁防护</a></dt>
-                                                                <dt><a href="#">高铁防护</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">林业产品</a>
-                                                            <dl class="">
-                                                                <dt><a href="#">森林防火</a></dt>
-                                                                <dt><a href="#">高铁防护</a></dt>
-                                                                <dt><a href="#">高铁防护</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">工业产品  
-                                            </a>
-                                                            <dl>
-                                                                <dt><a href="#">工业测温</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">工地产品</a>
-                                                            <dl class="small_menu">
-                                                                <dt><a href="#">工地检测</a></dt>
-                                                                <dt><a href="#">工地检测</a></dt>
-                                                                <dt><a href="#">工地检测</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">高点监控 </a>
-                                                            <dl class="small_menu">
-                                                                <dt><a href="#">高点监控</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">高点监控</a>
-                                                            <dl class="small_menu">
-                                                                <dt><a href="#">高点监控</a></dt>
-                                                                <dt><a href="#">森林防火</a></dt>
-                                                                <dt><a href="#">森林防火</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">嵌入式板</a>
-                                                            <dl class="small_menu">
-                                                                <dt><a href="#">嵌入式板...</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">高点监控</a>
-                                                            <dl class="small_menu">
-                                                                <dt><a href="#">高点监控</a></dt>
-                                                                <dt><a href="#">森林防火</a></dt>
-                                                                <dt><a href="#">高铁防护</a></dt>
-                                                            </dl>
-                                                        </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        </li>
-                                        <li>
-                                            <a href="about.html">关于我们</a>
-                                        </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+         
         <div class="banner">
             <div id="carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -339,7 +70,7 @@
             <div class="video_cont">
                 <div class="video_left">
                     <video loop="true">
-                        <!-- <source src="media/1.mp4" type="video/mp4" style="width:800px;height:100%;"> -->
+                        <source src="media/1.mp4" type="video/mp4" style="width:800px;height:100%;">
                     </video>
                 </div>
                 <div class="video_right">
@@ -384,18 +115,18 @@
             </div>
         </div>
         <div class="case">
-            <div class="case_cont">
+            <div class="case_cont" >
                 <p class="eng_tlt">
                 </p>
                 <h2 class="case_tlt">行业案例</h2>
                 <div class="case1">
-                    <div class="case1_cont" v-if="caseData[0]&&caseData[0].mainImg">
+                    <div class="case1_cont" v-for="item in caseData" v-if="caseData[0]&&caseData[0].mainImg">
                         <div class="case1_left caseLeft">
-                            <p>{{caseData[0].keywords}}</p>
-                            <div class="span">{{caseData[0].description}}</div>
+                            <p>{{item.keywords}}</p>
+                            <div class="span">{{item.description}}</div>
                         </div>
                         <div class="case1_right caseRight">
-                            <img :src="caseData[0].mainImg[0].url" class="img-responsive">
+                            <img :src="item.mainImg[0].url" class="img-responsive">
                         </div>
                     </div>
                 </div>
@@ -484,6 +215,7 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript " src="js/bootstrap.js"></script>
     <script src="js/my.js"></script>
     <script src="js/rem.js"></script>
@@ -625,16 +357,27 @@
                 var self = this;
                 var postData = window.base.cloneForm(self.paginate);
                 postData.searchItem = window.base.cloneForm(self.searchItem);
-
                 postData.searchItem = {
                     thirdapp_id: 59,
                     menu_id: 412,
+                     keywords:'首页推荐',
                 };
-
+                postData.order = {
+                            create_time:'desc'
+                        };
                 var callback = (res) => {
                     self.caseData = res.info.data;
                     self.paginate['count'] = res.total;
                     window.base.computePageArr(self);
+                    if(res.info.data.length>2){
+                                self.caseData = res.info.data.slice(0,2)
+                                self.paginate['count'] = res.total;
+                                window.base.computePageArr(self);
+                            }else{
+                                self.caseData = res.info.data;
+                                self.paginate['count'] = res.total;
+                                window.base.computePageArr(self);
+                            }        
                 };
                 window.base.articleList(postData, callback);
             },
@@ -644,7 +387,7 @@
                 var postData = window.base.cloneForm(self.paginate);
                 postData.searchItem = {
                     type: 1,
-                    parentid: 386
+                
                 };
                 var callback = (res) => {
                     self.labelData = res.info.data;
@@ -713,11 +456,13 @@
 
         }
     });
+    $(".menu li:eq(1)").addClass("this_li");
+
     </script>
     <script type="text/javascript">
-    
     window.onload = function () {
         $(".banner").css("height","auto");
+
     };
 
     </script>

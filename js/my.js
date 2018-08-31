@@ -15,9 +15,7 @@ $(function(){
 	})
 
 });
-$(window).load(function() {
-    
-
+$(document).ready(function() {
      $('.video').waypoint(function(direction) {
 
         if (direction === 'down' && !$(this.element).hasClass('animated')) {
@@ -42,7 +40,7 @@ $(window).load(function() {
         if (direction === 'down' && !$(this.element).hasClass('animated')) {
 
 
-            $('.product_cont').each(function(k) {
+            $('.fade_left').each(function(k) {
                 var el = $(this);
 
                 setTimeout(function() {
@@ -50,7 +48,7 @@ $(window).load(function() {
                 }, 1 * 100, 'easeInOutExpo');
 
             });
-        $('.product_cont1').each(function(k) {
+        $('.fade_right').each(function(k) {
                         var el = $(this);
 
                         setTimeout(function() {
@@ -79,6 +77,42 @@ $(window).load(function() {
     });
 
 
+     $('#item1').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
+    
+           $('.item1_left').addClass('fadeInLeft animated');  
+           $('.item1_right').addClass('fadeInRight animated'); 
+        }
+    }, {
+        offset: '300px'
+
+    });
+     $('#item2').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
+    
+           $('.item2_left').addClass('fadeInLeft animated');  
+           $('.item2_right').addClass('fadeInRight animated'); 
+        }
+    }, {
+        offset: '500px'
+
+    });
+     $('#item3').waypoint(function(direction) {
+
+        if (direction === 'down' && !$(this.element).hasClass('animated')) {
+           $('.item3_left').addClass('fadeInLeft animated');  
+           $('.item3_right').addClass('fadeInRight animated');
+          
+        }
+    }, {
+        offset: '700px'
+
+    });
+     $(window).scroll(function(){
+        $(window).css("height","auto")
+     })
 });
 
 

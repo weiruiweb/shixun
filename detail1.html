@@ -135,7 +135,8 @@
                         var self = this;
                         var postData = window.base.cloneForm(self.paginate);
                         postData.searchItem = {
-                            id:window.base.GetRequest().id,
+                        
+                            menu_id:window.base.GetRequest().id,
                         }
                         var callback = (res)=>{
                             self.productData = res.info.data[0];
@@ -218,7 +219,6 @@
                         var art_id = window.base.getDataSet(e).id;
                         window.location.href="./product.html?id="+art_id;
                     },
-
                     
                     intoDetail(e){
                         var self = this;

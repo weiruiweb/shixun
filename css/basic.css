@@ -56,3 +56,6 @@ input,textarea {outline: none; -webkit-box-shadow: none; box-shadow: none;-webki
     left: 0;
     z-index: 1030;
 }
+.carousel-inner > .item > img, .carousel-inner > .item > a > img{
+	line-height:normal;
+}

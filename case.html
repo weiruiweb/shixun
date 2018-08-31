@@ -23,78 +23,21 @@
 <script src="js/browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/base.js" type="application/javascript"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <style> 
 
 </style>
 </head>
 <body>
+<div class="configHead"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.configHead').load('./header.html');
+        });
+    </script>
 <div id="app">
-    <header >
-    <div class="navs">
-       <div class="navbox">
-            <div class="nav_container">
-                <a class="phone_logo"><img src="images/logo.png" class="img-responsive"></a>
-                <div class="search">
-                    <input type="text" placeholder="请输入关键字" />
-                    <div class="search_btn">
-                     <img src="images/seach.png" class="img-responsive">
-                    </div>
-                </div>
-                <div class="up_icon">
-                    <div id="up_icon">
-                        <div class="up_span">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="index_nav">
-                     <ul class="navlist fix" id="phone_navlist">
-                        <li class=""><a href="inedx.html">首页</a></li>
-                        <li class="this_li1">
-                            <a href="product.html" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="">产品中心<span class="caret"></span></a>
-                            <div class="pageInto menuInto">→</div>
-                            <div class="menu_all dropdown-menu" id="second_menu1"  role="menu" aria-labelledby="dropdownMenu1" data-stopPropagation="true">
-                                <div class="nav_container">
-                                    <ul class="menu" v-if="labelData">
-                                        <li v-if="productMenu&&productMenu.child" v-for="item in productMenu.child"> 
-                                            <a href="#" >{{item.title}}</a>
-                                            <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoProductDetail">
-                                                <dt ><a href="#" :data-id="item1.id" @click="intoProductDetail">{{item1.title}}</a></dt>       
-                                            </dl>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="this_li this_li2"  class="btn dropdown-toggle" id="dropdownMenu2" data-toggle="">
-                            <a href="case.html">行业案例<span class="caret"></span></a>
-                            <div class="pageInto menuInto1">→</div>
-                            <div class="menu_all dropdown-menu" id="second_menu2"  role="menu" aria-labelledby="dropdownMenu2"  data-stopPropagation="true">
-                                <div class="nav_container">
-                                    <ul class="menu" v-if="labelData">
-                                        <li v-if="caseMenu&&caseMenu.child" v-for="item in caseMenu.child">
-                                            <a href="#" >{{item.title}}</a>
-                                            <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoCaseDetail">
-                                                <dt ><a href="#" :data-id="item1.id" @click="intoCaseDetail">{{item1.title}}</a></dt>   
-                                            </dl>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="about.html">
-                                关于我们
-                               
-                             </a>
-                        </li>
-                    </ul>
-            </div>
-        </div>
-    </div>
-    </header>
+
+
     <div class="banner">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
@@ -141,12 +84,12 @@
                    <h3>行业案例</h3>
                    <p>Successful cases</p>
             </div>
-       <div class="case_content">
+       <div class="case_content" v-for="(item,index) in productData">
             <div class="case_list" id="item1">
                 <div class="case_left item1_left">
-                    <img src="images/case3.png" class="img-responsive">
-                    <h6 class="pro_h">边海防二代视频监控系统</h6>
-                    <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
+                    <img :src="item.mainImg[0].url" class="img-responsive">
+                    <h6 class="pro_h">{{item.title}}</h6>
+                    <p class="pro_p">{{item.description}}</p>
                 </div>
                 <div class="case_right item1_right">
                     <img src="images/case4.png" class="img-responsive">
@@ -253,26 +196,22 @@
                         allPages:0,
                         linkPage:'',
                         productMenu:{},
-                        caseMenu:{}
+                        caseMenu:{},
                     }
 
                 },
                 
                 created: function () {
-
-
                     this.getBannerData();
-                    this.getLabelData()
-
+                    //this.getArticleData();
                 },
                 methods:{
-
-                    getArticleData(isNew) {
+                     getArticleData(isNew) {
                         var self = this;
                         var postData = window.base.cloneForm(self.paginate);
                         postData.searchItem = window.base.cloneForm(self.searchItem);
                         console.log(window.base.GetRequest())
-                        if(window.base.GetRequest()&&window.base.GetRequest().id){
+                        if(window.base.GetRequest() && window.base.GetRequest().id){
                             postData.searchItem.menu_id = ['in',window.base.GetRequest().id];
                         }else{
                             postData.searchItem.menu_id = ['in',self.menu_array_two];
@@ -285,7 +224,6 @@
                         window.base.articleList(postData,callback);
                     },
                     
-
                     getBannerData() {
                         var self = this;                    
                         var postData = {
@@ -304,8 +242,6 @@
                         };
                         window.base.articleList(postData,callback);
                     },
-
-
                     getLabelData() {
                         var self = this;
                         var postData = window.base.cloneForm(self.paginate);
@@ -317,10 +253,10 @@
                             self.productMenu = window.base.findKeyFromArray(self.labelData,'title','产品中心')[0];
                             var length=self.productMenu['child'].length;
                             self.menu_array = [];
-                            for(var i=0;i<length;i++){  
+                            for(var i=0;i< length;i++){  
                                 if(self.productMenu['child'][i]['child']){
                                     var child_length = self.productMenu['child'][i]['child'].length;
-                                    for(var c_i=0;c_i<child_length;c_i++){
+                                    for(var c_i=0;c_i< child_length;c_i++){
                                         self.menu_array.push(self.productMenu['child'][i]['child'][c_i].id)
                                     };
                                 };
@@ -329,23 +265,20 @@
                             self.caseMenu = window.base.findKeyFromArray(self.labelData,'title','行业案例')[0]; 
                             var lengthTwo= self.caseMenu['child'].length;
                             self.menu_array_two = [];
-                            for(var i=0;i<lengthTwo;i++){  
+                            for(var i=0;i< lengthTwo;i++){  
                                 if(self.caseMenu['child'][i]['child']){
                                     var child_lengthTwo = self.caseMenu['child'][i]['child'].lengthTwo;
-                                    for(var c_i=0;c_i<child_length;c_i++){
+                                    for(var c_i=0;c_i< child_length;c_i++){
                                         self.menu_array_two.push(self.caseMenu['child'][i]['child'][c_i].id)
                                     };
                                 };
                             };
-
-
                            
                             self.getArticleData();
                         };
                         window.base.labelGet(postData,callback);
                     },  
-
-                    
+  
 
                     changePage(e){
                         var self = this;
@@ -391,79 +324,16 @@
                     },
 
                 }
-            });
-
-
-
-        var w=$(window).width();
-
-        if(w>768){
-
-            $("#second_menu1").hover(function(){
-            console.log("nihao");
-                $("#second_menu1").show();
-                    },function(){
-                $("#second_menu1").hide();  
-            });
-            $("#second_menu2").hover(function(){
-                    $(this).show();
-                   
-                        },function(){
-                    $(this).hide();           
-            })
-
-            $(".this_li1").hover(function(){
-                $("#second_menu1").show();
-                $("#second_menu2").hide();
-
-            });
-
-            $(".this_li2").hover(function(){
-                $("#second_menu2").show();
-                $("#second_menu1").hide();
-            });
-
-            }
-
-            if(w <= 768){
-                $(".menu li").click(function(){
-                    $(".menu dl").hide(); 
-                    $(this).find("dl").toggle();
-                })
-                $(".this_li1 a").attr("data-toggle","dropdown");
-                $(".this_li2 a").attr("data-toggle","dropdown")
-            }
-
-            $("#up_icon").click(function(){
-                $(".index_nav").toggle();
-            });
-    
-           $(".menu li:eq(9)").css("clear","both");
-           $(".menus li:eq(9)").css("clear","both");
-             
-            $("body").on('click','[data-stopPropagation]',function (e) {
-                    e.stopPropagation();
-            });
-
-             $(".menuInto").click(function(){
-                    window.location.href='product.html';
-                })
-            $(".menuInto1").click(function(){
-                    window.location.href='case.html';
-                })
+            }); 
 
 </script>
+ <script type="text/javascript">
+    window.onload = function () {
+       $(".banner").css("height","auto");
+    };
+    </script>
 <script type="text/javascript">
-  
-   
-
-   
-
-</script>
-<script type="text/javascript">
-$(window).load(function() {
-    
-
+$(document).ready(function() {
      $('#item1').waypoint(function(direction) {
 
         if (direction === 'down' && !$(this.element).hasClass('animated')) {
@@ -497,9 +367,6 @@ $(window).load(function() {
         offset: '700px'
 
     });
-    
-
-
 });
 
 </script>
