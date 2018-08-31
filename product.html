@@ -193,7 +193,8 @@
 
                     getArticleData(isNew) {
                         var self = this;
-                        var postData = window.base.cloneForm(self.paginate);
+                        var postData = {};
+                        postData.paginate = window.base.cloneForm(self.paginate);
                         postData.searchItem = window.base.cloneForm(self.searchItem);
                         console.log(window.base.GetRequest())
                         if(window.base.GetRequest()&&window.base.GetRequest().id){
@@ -203,7 +204,7 @@
                         };
                         var callback = (res)=>{
                             self.productData = res.info.data;
-                            self.paginate['count'] = res.total;
+                            self.paginate['count'] = res.info.total;
                             window.base.computePageArr(self);
                         };
                         window.base.articleList(postData,callback);
@@ -242,6 +243,7 @@
                             var length=self.productMenu['child'].length;
                             self.menu_array = [];
                             for(var i=0;i< length;i++){  
+                                self.menu_array.push(self.productMenu['child'][i].id)
                                 if(self.productMenu['child'][i]['child']){
                                     var child_length = self.productMenu['child'][i]['child'].length;
                                     for(var c_i=0;c_i< child_length;c_i++){
@@ -250,17 +252,7 @@
                                 };
                             };
 
-                            self.caseMenu = window.base.findKeyFromArray(self.labelData,'title','行业案例')[0]; 
-                            var lengthTwo= self.caseMenu['child'].length;
-                            self.menu_array_two = [];
-                            for(var i=0;i< lengthTwo;i++){  
-                                if(self.caseMenu['child'][i]['child']){
-                                    var child_lengthTwo = self.caseMenu['child'][i]['child'].lengthTwo;
-                                    for(var c_i=0;c_i< child_length;c_i++){
-                                        self.menu_array_two.push(self.caseMenu['child'][i]['child'][c_i].id)
-                                    };
-                                };
-                            };
+                            
                            
                             self.getArticleData();
                         };

@@ -1,5 +1,5 @@
 window.base={
-    g_restUrl:'http://solelytech.iicp.net/cmsygr/public/index.php/api/v1/',
+    g_restUrl:'http://byu2331440001.my3w.com/shixun/public/index.php/api/v1/',
 
     getData:function(params){
         if(!params.type){
@@ -173,6 +173,7 @@ window.base={
     computePageArr:function(self) {   
         self.allPages = Math.ceil(self.paginate['count']/self.paginate['pagesize']);
         console.log(self.allPages);
+        console.log(self.paginate);
         self.pageArray = [];
         self.pageArray.push(self.paginate.currentPage);
         if(self.paginate.currentPage+1 <= self.allPages){

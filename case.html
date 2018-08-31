@@ -84,21 +84,25 @@
                    <h3>行业案例</h3>
                    <p>Successful cases</p>
             </div>
-       <div class="case_content" v-for="(item,index) in productData">
-            <div class="case_list" id="item1">
-                <div class="case_left item1_left">
-                    <img :src="item.mainImg[0].url" class="img-responsive">
-                    <h6 class="pro_h">{{item.title}}</h6>
-                    <p class="pro_p">{{item.description}}</p>
-                </div>
-                <div class="case_right item1_right">
-                    <img src="images/case4.png" class="img-responsive">
-                    <div class="case_tlt">
-                        <h6 class="pro_h">边海防二代视频监控系统</h6>
-                        <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
+       <div class="case_content" >
+            <template v-for="(item,index) in mainData">
+                
+                <div v-if="test(index)==1||test(index)==2" class="case_list" id="item1">
+                    <div class="case_left item1_left">
+                        <img :src="item.mainImg[0].url" class="img-responsive">
+                        <h6 class="pro_h">{{item.title}}</h6>
+                        <p class="pro_p">{{item.description}}</p>
+                    </div>
+                    <div class="case_right item1_right">
+                        <img src="images/case4.png" class="img-responsive">
+                        <div class="case_tlt">
+                            <h6 class="pro_h">边海防二代视频监控系统</h6>
+                            <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </template>
+            
        </div>
        <div class="case_content case_content1">
             <div class="case_list"  id="item2">
@@ -181,7 +185,7 @@
                 data: function() {
                     return {
                         bannerData: [],
-                        productData: [],
+                        mainData: [],
                         labelData:[],
                         paginate: {
                             count: 0,
@@ -203,22 +207,51 @@
                 
                 created: function () {
                     this.getBannerData();
-                    //this.getArticleData();
+                    this.getLabelData();
                 },
                 methods:{
-                     getArticleData(isNew) {
+
+                    test(index){
+
                         var self = this;
-                        var postData = window.base.cloneForm(self.paginate);
+                        if(!self.article_index){
+                            var num = 0;
+                        }else{
+                            var num = self.article_index;
+                        };
+                        if(num==6){
+                            self.article_index = 1;
+                        }else{
+                            self.article_index = num +1;
+                        };
+                        return self.article_index;
+                        
+
+                    },
+
+                    computeIndex(index){
+                        var self = this;
+                        console.log(index)
+                        console.log('computeIndex',self.article_index);
+                        self.article_index++;
+                        
+                    },
+
+                    getMainData(isNew) {
+                        var self = this;
+                        var postData = {};
+                        postData.paginate = window.base.cloneForm(self.paginate);
                         postData.searchItem = window.base.cloneForm(self.searchItem);
-                        console.log(window.base.GetRequest())
+                        console.log(self.menu_array);
                         if(window.base.GetRequest() && window.base.GetRequest().id){
                             postData.searchItem.menu_id = ['in',window.base.GetRequest().id];
                         }else{
-                            postData.searchItem.menu_id = ['in',self.menu_array_two];
+                            postData.searchItem.menu_id = ['in',self.menu_array];
                         };
                         var callback = (res)=>{
-                            self.productData = res.info.data;
-                            self.paginate['count'] = res.total;
+                            console.log('getMainData',res);
+                            self.mainData = res.info.data;
+                            self.paginate['count'] = res.info.total;
                             window.base.computePageArr(self);
                         };
                         window.base.articleList(postData,callback);
@@ -250,31 +283,22 @@
                         };
                         var callback = (res)=>{
                             self.labelData = res.info.data;
-                            self.productMenu = window.base.findKeyFromArray(self.labelData,'title','产品中心')[0];
-                            var length=self.productMenu['child'].length;
-                            self.menu_array = [];
-                            for(var i=0;i< length;i++){  
-                                if(self.productMenu['child'][i]['child']){
-                                    var child_length = self.productMenu['child'][i]['child'].length;
-                                    for(var c_i=0;c_i< child_length;c_i++){
-                                        self.menu_array.push(self.productMenu['child'][i]['child'][c_i].id)
-                                    };
-                                };
-                            };
+                            
 
                             self.caseMenu = window.base.findKeyFromArray(self.labelData,'title','行业案例')[0]; 
                             var lengthTwo= self.caseMenu['child'].length;
-                            self.menu_array_two = [];
+                            self.menu_array = [self.caseMenu.id];
                             for(var i=0;i< lengthTwo;i++){  
+                                self.menu_array.push(self.caseMenu['child'][i].id);
                                 if(self.caseMenu['child'][i]['child']){
-                                    var child_lengthTwo = self.caseMenu['child'][i]['child'].lengthTwo;
-                                    for(var c_i=0;c_i< child_length;c_i++){
-                                        self.menu_array_two.push(self.caseMenu['child'][i]['child'][c_i].id)
+                                    var child_lengthTwo = self.caseMenu['child'][i]['child'].length;
+                                    for(var c_i=0;c_i< child_lengthTwo;c_i++){
+                                        self.menu_array.push(self.caseMenu['child'][i]['child'][c_i].id)
                                     };
                                 };
                             };
                            
-                            self.getArticleData();
+                            self.getMainData();
                         };
                         window.base.labelGet(postData,callback);
                     },  
@@ -295,7 +319,7 @@
                             is_page: true,
                         };
                         self.searchItem.menu_id  = window.base.getDataSet(e).id;
-                        self.getArticleData();
+                        self.getMainData();
                     },
 
                     linkTo(e){
