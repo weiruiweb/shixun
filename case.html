@@ -85,20 +85,12 @@
                    <p>Successful cases</p>
             </div>
        <div class="case_content" >
-            <template v-for="(item,index) in mainData">
-                
+            <template v-for="(item,index) in mainData"> 
                 <div v-if="test(index)==1||test(index)==2" class="case_list" id="item1">
                     <div class="case_left item1_left">
                         <img :src="item.mainImg[0].url" class="img-responsive">
                         <h6 class="pro_h">{{item.title}}</h6>
                         <p class="pro_p">{{item.description}}</p>
-                    </div>
-                    <div class="case_right item1_right">
-                        <img src="images/case4.png" class="img-responsive">
-                        <div class="case_tlt">
-                            <h6 class="pro_h">边海防二代视频监控系统</h6>
-                            <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
-                        </div>
                     </div>
                 </div>
             </template>
