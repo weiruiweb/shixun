@@ -25,7 +25,13 @@
 <script src="js/base.js" type="application/javascript"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <style> 
-
+.menu{
+    width:50%;
+    float: right;
+}
+.menu li{
+    width:25%;
+}
 </style>
 </head>
 <body>
@@ -33,6 +39,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.configHead').load('./header.html');
+            $("#footer").load('./footer.html');
         });
     </script>    
 <div id="app">
@@ -75,11 +82,11 @@
                 <img src="images/qq_icon.png" class="">
                 <p>QQ交谈</p>
         </div>
-         <!-- <div class="product_title" v-if="productData.info.data[0]"> 
+         <div class="product_title" v-if="productData.info.data[0]"> 
                 <p>{{productData.info.data[0].small_title}}</p>
                 <h3>{{productData.info.data[0].title}}</h3>     
-        </div> -->
-        <!-- <div class="about_content">
+        </div>
+        <div class="about_content">
             <div id="about">
                 <div class="introduce">
                     <div class="intro_left">
@@ -95,14 +102,14 @@
                             <img :src="productData.info.data[0].mainImg[2].url" class="img-responsive">
                         </div>
                     </div>
-                    <div class="intro_right" v-if="productData.info.data[0].content">
-                        <div class="introRight_tlt">
-                            <p class="p1" v-html="productData.info.data[0].content"></p>
+                    <div class="intro_right" v-if="productData.info.data[0].content" :data-id="productData.info.data[0].id" @click="intoDetail">
+                        <div class="introRight_tlt" :data-id="productData.info.data[0].id" @click="intoDetail">
+                            <p class="p1" v-html="productData.info.data[0].content" :data-id="productData.info.data[0].id" @click="intoDetail"></p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="works">
             <img src="images/about_bg.jpg" class="img-responsive about_bg">
                 <div class="works_cont">
@@ -111,7 +118,7 @@
                             <p class="eng_tlt">{{productData.info.data[1].small_title}}</p>
                             <p class="zh_tlt">{{productData.info.data[1].title}}</p>
                         </div>
-                        <div class="works_show">
+                        <div class="works_show" >
                             <div class="works_item" v-for="item in productData.info.data[1].bannerImg">
                                 <div class="works_img">
                                     <img :src="item.url" class="img-responsive">
@@ -186,25 +193,18 @@
             <div class="news_cont">
                 <div class="news_left">  
                     <div class="news_img">    
-                        <img src="images/news.jpg" class="img-responsive">
+                        <img :src="newsData[0].mainImg&&newsData[0].mainImg.length>0?newsData[0].mainImg[0].url:''" class="img-responsive">
                     </div>
                 </div>
                 <div class="news_right"> 
                     <div class="news_list">
-                        <div class="news_item" v-for="item in newsData">  
-                            <div class="news_data">    
-                                <div class="data_day">
-                                    18
+                        <div class="news_item" v-for="item in newsData" :data-id="item.id"  @click="intoDetail">  
+                            <div class="news_desc" style="height:100%;" :data-id="item.id"  @click="intoDetail">
+                                <div style="height:37%;overflow: hidden;" :data-id="item.id"  @click="intoDetail">
+                                    <span class="small_tltl">{{item.title}}</span>
+                                    <a class="news_date">{{item.create_time}}</a>
                                 </div>
-                                 <div class="data_year">
-                                    2018/8
-                                </div>
-                            </div>
-                            <div class="news_desc" style="height:100%;">
-                                <div class="small_tltl" style="height:37%;overflow: hidden;">
-                                    {{item.title}}
-                                </div>
-                                <div style="height:63%;overflow: hidden;">
+                                <div style="height:63%;overflow: hidden;" :data-id="item.id"  @click="intoDetail">
                                     <p>{{item.description}}</p>
                                 </div>
                             </div>
@@ -215,41 +215,10 @@
             </div>
         </div>
     </div>
-        <div class="footer" style="margin-top: 1.5rem">
-            <img src="images/fotter.png" class="img-responsive footer_bg">
-            <div class="footer_cont">
-                <div class="contact">
-                    Contact us
-                </div>
-                <ul>
-                    <li>    
-                        <img src="images/footer_icon1.png" class="img-responsive">
-                        <a>地址：</a>
-                        <span>北京市海淀区天秀路10号建设大学1号楼A504 </span>
-                    </li>
-                     <li>    
-                         <img src="images/footer_icon2.png" class="img-responsive">
-                        <a>电话：</a>
-                        <span>010-62670465    010- 64371051  </span>
-                    </li>
-                     <li>    
-                         <img src="images/footer_icon3.png" class="img-responsive">
-                        <a>邮箱：</a>
-                        <span> shixun212@126.com  </span>
-                    </li>
-                     <li>    
-                         <img src="images/footer_icon4.png" class="img-responsive">
-                        <a>QQ：</a>
-                        <span>7837386466 </span>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
         
 
 </div>
-
+<div id="footer"></div>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript " src="js/bootstrap.js"></script>
 <script src="js/my.js"></script>
@@ -264,7 +233,9 @@
                         bannerData:[],
                         productData:[],
                         labelData:[],
+                        monthData:[],
                         cooperData:[],
+                        dayData:[],
                         newsData:[],
                         paginate: {
                             count: 0,
@@ -351,7 +322,7 @@
                         postData.searchItem = window.base.cloneForm(self.searchItem);
                         postData.searchItem = {
                             thirdapp_id: 59,
-                            menu_id: 419,
+                            menu_id: 423,
                         };
                         var callback = (res) => {
                             self.cooperData = res.info.data;
@@ -366,10 +337,20 @@
                         postData.searchItem = window.base.cloneForm(self.searchItem);
                         postData.searchItem = {
                             thirdapp_id: 59,
-                            menu_id: 425,
+                            menu_id: 424,
                         };
                         var callback = (res) => {
+                        console.log(res)
+
                             self.newsData = res.info.data;
+                            for (var i = 0; i < self.newsData.length; i++) {
+                                self.dayData.push(parseInt(self.newsData[i]['create_time'].slice(8,10)));
+                                self.monthData.push(self.newsData[i]['create_time'].slice(0,7));
+                                //self.monthData[i].replace(/"/,' ')
+                                //console.log(self.monthData)
+                            };
+
+                            console.log(self.monthData)
                             self.paginate['count'] = res.total;
                             window.base.computePageArr(self);
                         };
@@ -413,10 +394,15 @@
                         window.location.href="./product.html?id="+art_id;
                     },
 
-                    intoDetail(e){
+                    intopage(e){
                         var self = this;
                         var art_id = window.base.getDataSet(e).id;
-                        window.location.href="./detail.html?id="+art_id;
+                        window.location.href = "./detail1.html?id=" + art_id;
+                     },
+                    intoDetail(e) {
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href = "./detail.html?id=" + art_id;
                     },
 
                 }

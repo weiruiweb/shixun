@@ -24,133 +24,142 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/base.js" type="application/javascript"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-<style> 
-
-</style>
 </head>
 <body style="height:100%;">
 <div class="configHead"></div>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.configHead').load('./header.html');
+            $('#footer').load('./footer.html');
         });
     </script>
 <div class="all_page">
-<div id="app">
-    <div class="banner">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" class="active"></li>
-            <li data-target="#carousel-example-generic" ></li>
-        </ol>
-        <div class="banner_rightTxt">
-            <span>SHI XUN KE JI</span>
-        </div>
-        <div class="carousel-inner" role="listbox">
-             <div v-for="(item, index) in bannerData.mainImg" class="item" :class="index=='0'?'active':''" >
-
-                <img :src="item.url" alt="..." class="img-responsive">
-            </div>
-        </div>
-        <div class="container">
-            <div class="banner_content">
+    <div id="app">
+        <div class="banner">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" class="active"></li>
+                <li data-target="#carousel-example-generic" ></li>
+            </ol>
+            <div class="banner_rightTxt">
                 <span>SHI XUN KE JI</span>
-                <p class="hidden-xs">智能交通事件检测器</p>
-                <p class="hidden-xs">视频监控平台</p>
-                <a class="hidden-xs">Intelligent traffic event detector.Video monitoring platform.</a>
-                <div class="watch_video">
-                    <a class="">观看视频</a>
+            </div>
+            <div class="carousel-inner" role="listbox">
+                 <div v-for="(item, index) in bannerData.mainImg" class="item" :class="index=='0'?'active':''" >
+
+                    <img :src="item.url" alt="..." class="img-responsive">
                 </div>
             </div>
-            
-        </div>
-    </div>  
-
-    </div>
-    <div>
-    <div class="product_show">
-        <div class="kefu">
-                <img src="images/qq_icon.png" class="">
-                <p>QQ交谈</p>
-        </div>
-        <div class="product_list">
-           
-            <div class="product_title"> 
-                <i class="i1"></i>
-                <i class="i2"></i>
-                <i class="i3"></i>
-                <i class="i4"></i>
-                   <h3>产品中心</h3>
-                   <p>PRODUCT CENTER</p>
-            </div>
-  
-
-            <div class="product_item item1" v-for="(item,index) in productData" 
-             :class="item.id%2 != 0?'other_css':'other_css1'">
-                <div class="product_lefts">
-                    <img src="images/product_bg1.jpg" class="img-responsive" :style="item.id%2 != 0?'display:none':''">
-                    <div class="product_des">
-                        <h6 class="pro_h">{{item.title}}</h6>
-                        <p class="pro_p">{{item.description}}</p>
-                        <a href="#" :data-id="item.id" @click="intoDetail">了解详情</a>
+            <div class="container">
+                <div class="banner_content">
+                    <span>SHI XUN KE JI</span>
+                    <p class="hidden-xs">智能交通事件检测器</p>
+                    <p class="hidden-xs">视频监控平台</p>
+                    <a class="hidden-xs">Intelligent traffic event detector.Video monitoring platform.</a>
+                    <div class="watch_video">
+                        <a class="">观看视频</a>
                     </div>
                 </div>
-                <div class="product_rights">
-                    <img :src="item.mainImg[0].url" class="product5 img-responsive">
+                
+            </div>
+        </div>  
+
+        </div>
+        <div>
+        <div class="product_show">
+            <div class="kefu">
+                    <img src="images/qq_icon.png" class="">
+                    <p>QQ交谈</p>
+            </div>
+            <div class="product_list">
+               
+                <div class="product_title"> 
+                    <i class="i1"></i>
+                    <i class="i2"></i>
+                    <i class="i3"></i>
+                    <i class="i4"></i>
+                       <h3>产品中心</h3>
+                       <p>PRODUCT CENTER</p>
                 </div>
+      
+                <template v-for="(item,index) in mianData">
+                    <div>{{test(index)}}</div>
+                    <div class="product_item item1" v-if="article_index==1">
+                        <div class="product_lefts">
+                            <img src="images/product_bg1.jpg" class="img-responsive">
+                            <div class="product_des">
+                                <h6 class="pro_h">{{item.title}}</h6>
+                                <p class="pro_p">{{item.description}}</p>
+                                <a href="#" :data-id="item.id" @click="intoDetail">了解详情</a>
+                            </div>
+                        </div>
+                        <div class="product_rights">
+                            <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="product_item item2" v-if="article_index==2">
+                        <div class="product_left2">
+                            <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive">
+                        </div>
+                        <div class="product_right2">
+                           <div class="product_des">
+                                <h6 class="pro_h">{{item.title}}</h6>
+                                <p class="pro_p">{{item.description}}</p>
+                                <a href="#" :data-id="item.id" @click="intoDetail">了解详情</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product_item item3" v-if="article_index==3">
+                        <div class="product_left3">
+                            <img src="images/product_bg2.jpg" class="img-responsive">
+                            <div class="product_des">
+                                <h6 class="pro_h">{{item.title}}</h6>
+                                <p class="pro_p">{{item.description}}</p>
+                                <a href="#" :data-id="item.id" @click="intoDetail">了解详情</a>
+                            </div>
+                        </div>
+                        <div class="product_right3">
+                           <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="product_item item4" v-if="article_index==4">
+                        <div class="product_left4">
+                            <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive">
+                        </div>
+                        <div class="product_right4">
+                            <div class="product_des">
+                                <h6 class="pro_h">边海防二代视频监控系统</h6>
+                                <p class="pro_p">智能安防监控平台V1.2、<span class="hidden-xs">用户体验优化搜索</br>跟踪智能跳转 </span></p>
+                                <a href="#">了解详情</a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
-        </div>
 
-    </div>
-    </div>                        
-    <div class="fenye">
-        <span>
-            共：{{allPages}}页
-        </span>
-        <a class="pages backPage" data-type="back" @click="changePage">上一页</a>
-        <span v-for="item in pageArray">
-            <a v-if="item == paginate.currentPage" class="currentpages active" >{{item}}</a>
-            <a v-if="item != paginate.currentPage" class="currentpages" :data-page="item"  @click="linkTo">{{item}}</a>
-        </span>
-        <a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
-        <span>
-            跳转至：
-            <input style="border:1px solid black;" :data-page="linkPage" v-model="linkPage" @blur="linkTo" />
-        </span>
-    </div>
-                            
-    <div class="footer">
-        <img src="images/fotter.png" class="img-responsive footer_bg">
-        <div class="footer_cont">
-            <div class="contact">
-                Contact us
-            </div>
-            <ul>
-                <li>    
-                    <img src="images/footer_icon1.png" class="img-responsive">
-                    <a>地址：</a>
-                    <span>北京市海淀区天秀路10号建设大学1号楼A504 </span>
-                </li>
-                 <li>    
-                     <img src="images/footer_icon2.png" class="img-responsive">
-                    <a>电话：</a>
-                    <span>010-62670465    010- 64371051  </span>
-                </li>
-                 <li>    
-                     <img src="images/footer_icon3.png" class="img-responsive">
-                    <a>邮箱：</a>
-                    <span> shixun212@126.com  </span>
-                </li>
-                 <li>    
-                     <img src="images/footer_icon4.png" class="img-responsive">
-                    <a>QQ：</a>
-                    <span>7837386466 </span>
-                </li>
-
-            </ul>
         </div>
+        </div>                        
+        <div class="fenye">
+            <span>
+                共：{{allPages}}页
+            </span>
+            <a class="pages backPage" data-type="back" @click="changePage">上一页</a>
+            <span v-for="item in pageArray">
+                <a v-if="item == paginate.currentPage" class="currentpages active" >{{item}}</a>
+                <a v-if="item != paginate.currentPage" class="currentpages" :data-page="item"  @click="linkTo">{{item}}</a>
+            </span>
+            <a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
+            <span>
+                跳转至：
+                <input style="border:1px solid black;" :data-page="linkPage" v-model="linkPage" @blur="linkTo" />
+            </span>
+        </div>
+                                
+        
     </div>
 </div>
+<div id="footer">
+        
 </div>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript " src="js/bootstrap.js"></script>
@@ -164,7 +173,7 @@
                 data: function() {
                     return {
                         bannerData: [],
-                        productData: [],
+                        mianData: [],
                         labelData:[],
                         paginate: {
                             count: 0,
@@ -179,7 +188,7 @@
                         allPages:0,
                         linkPage:'',
                         productMenu:{},
-                        caseMenu:{}
+                        caseMenu:{},
                     }
 
                 },
@@ -190,8 +199,32 @@
 
                 },
                 methods:{
+                    test(index){
+                        var self = this;
+                        if(!self.article_index){
+                            var num = 0;
+                        }else{
+                            var num = self.article_index;
+                        };
+                        if(num==4){
+                            self.article_index = 1;
+                        }else{
+                            self.article_index = num +1;
+                        };
+                        //return self.article_index;
+                        console.log(self.article_index)
 
-                    getArticleData(isNew) {
+                    },
+                    
+                    computeIndex(index){
+                        var self = this;
+                        console.log(index)
+                        console.log('computeIndex',self.article_index);
+                        self.article_index++;
+                        
+                    },
+
+                    getMainData(isNew) {
                         var self = this;
                         var postData = {};
                         postData.paginate = window.base.cloneForm(self.paginate);
@@ -203,7 +236,7 @@
                             postData.searchItem.menu_id = ['in',self.menu_array];
                         };
                         var callback = (res)=>{
-                            self.productData = res.info.data;
+                            self.mianData = res.info.data;
                             self.paginate['count'] = res.info.total;
                             window.base.computePageArr(self);
                         };
@@ -239,22 +272,19 @@
                         };
                         var callback = (res)=>{
                             self.labelData = res.info.data;
-                            self.productMenu = window.base.findKeyFromArray(self.labelData,'title','产品中心')[0];
-                            var length=self.productMenu['child'].length;
-                            self.menu_array = [];
-                            for(var i=0;i< length;i++){  
-                                self.menu_array.push(self.productMenu['child'][i].id)
-                                if(self.productMenu['child'][i]['child']){
-                                    var child_length = self.productMenu['child'][i]['child'].length;
-                                    for(var c_i=0;c_i< child_length;c_i++){
-                                        self.menu_array.push(self.productMenu['child'][i]['child'][c_i].id)
+                            self.caseMenu = window.base.findKeyFromArray(self.labelData,'title','产品中心')[0]; 
+                            var lengthTwo= self.caseMenu['child'].length;
+                            self.menu_array = [self.caseMenu.id];
+                            for(var i=0;i< lengthTwo;i++){  
+                                self.menu_array.push(self.caseMenu['child'][i].id);
+                                if(self.caseMenu['child'][i]['child']){
+                                    var child_lengthTwo = self.caseMenu['child'][i]['child'].length;
+                                    for(var c_i=0;c_i< child_lengthTwo;c_i++){
+                                        self.menu_array.push(self.caseMenu['child'][i]['child'][c_i].id)
                                     };
                                 };
                             };
-
-                            
-                           
-                            self.getArticleData();
+                            self.getMainData();
                         };
                         window.base.labelGet(postData,callback);
                     },  
@@ -276,7 +306,7 @@
                             is_page: true,
                         };
                         self.searchItem.menu_id  = window.base.getDataSet(e).id;
-                        self.getArticleData();
+                        self.getMainData();
                     },
 
                     linkTo(e){
@@ -312,8 +342,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    
-
      $('.product_item').waypoint(function(direction) {
 
         if (direction === 'down' && !$(this.element).hasClass('animated')) {
@@ -359,7 +387,6 @@ $(document).ready(function() {
         offset: '400px'
 
     });
-
 
 });
 

@@ -22,10 +22,11 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/base.js" type="application/javascript"></script>
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/rem.js"></script>
 </head>
 <body>
     
-<div id="app" style="width:100%">
+<div id="h_app" style="width:100%">
     <div class="navs">
        <div class="navbox">
             <div class="nav_container">
@@ -143,8 +144,8 @@
 </style>
 
 <script type="text/javascript">
-    var app = new Vue({
-        el: '#app',
+    var h_app = new Vue({
+        el: '#h_app',
         data: function() {
             return {
                 bannerData: [],
@@ -183,7 +184,7 @@
             this.getMainData();
         },
         methods: {
-            toggleMenu(e){
+            toggleMenu: function(e) {
                 var self = this;
                 var dataSet = window.base.getDataSet(e);
                 if(dataSet.show_id){
@@ -206,18 +207,18 @@
                 
                 console.log(self.is_show)
             },
-            menuShow(e){
+            menuShow: function(e) {
                 var self =this;
                 var dataSet = window.base.getDataSet(e);                
                 self.computer_id = dataSet.computer_id;                    
             },
-            menuHide(e){
+            menuHide: function(e) {
                 var self =this;
                               
                 self.computer_id = '';                    
             },
 
-            search(){
+            search: function() {
                 var self =this;
                 console.log(self.searchData) 
                 if(self.searchData){
@@ -229,7 +230,7 @@
                           listorder:'desc'
                         }
                     };
-                    var callback = (res)=>{
+                    var callback = function(res) {
                         if(res.info.data.length>0){
                             window.location.href="./detail1.html?id="+res.info.data[0]['id'];
                         }else{
@@ -243,7 +244,7 @@
                 }                 
             },
            
-            getMainData() {
+            getMainData: function() {
                 var self = this;
                 var postData = {
                     searchItem:{
@@ -253,7 +254,7 @@
                       listorder:'desc'
                     }
                 };
-                var callback = (res) => {
+                var callback = function(res) {
                     console.log(res);
                     self.menu = res.info.data;
                     self.productMenu = window.base.findKeyFromArray(self.menu,'title','产品中心')[0];
@@ -284,13 +285,13 @@
                 window.base.labelGet(postData, callback);
             },
 
-            intoCaseDetail(e){
+            intoCaseDetail: function(e) {
                 var self = this;
                 var computer_id = window.base.getDataSet(e).id;
                 window.location.href="./case.html?id="+art_id;
             },
 
-            intoUrl(e){
+            intoUrl: function(e) {
                 var self =this;
                 var dataSet = window.base.getDataSet(e);                
                 self.computer_id = dataSet.computer_id;  
@@ -312,12 +313,12 @@
             },
 
  
-            intoDetail(e){
+            intoDetail: function(e) {
                 var self = this;
                 var art_id = window.base.getDataSet(e).id;
                 window.location.href="./detail1.html?id="+art_id;
             },
-            intoPage(e){
+            intoPage: function(e) {
                 var self =this;
                 var dataSet = window.base.getDataSet(e);                
                 self.show_id = dataSet.show_id;

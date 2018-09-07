@@ -64,7 +64,6 @@ window.base={
         this.getData(allParams)
     },
 
-
     articleOne:function(param,callback) {
         var allParams = {
             url:'UserArticle/GetInfo',
@@ -149,8 +148,10 @@ window.base={
     findKeyFromArray:function(Array,key,value) {  
         var new_array = []; 
         for (var i = 0; i < Array.length; i++) {
+            
             if(Array[i][key]&&Array[i][key] == value){
                 new_array.push(Array[i])
+                console.log('Array',Array[i])
             };
         };
         return new_array; 
