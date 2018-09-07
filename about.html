@@ -23,6 +23,7 @@
 <script src="js/browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/base.js" type="application/javascript"></script>
+<script src="js/rem.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <style> 
 .menu{
@@ -90,26 +91,29 @@
             <div id="about">
                 <div class="introduce">
                     <div class="intro_left">
-                        <div class="introImg_left" v-if="productData.info.data[0].mainImg">
+                        <div class="introImg_left" v-if="productData.info.data[0].mainImg"  :data-id="productData.info.data[0].id" @click="intoDetail">
                             <div v-if="productData.info.data[0].mainImg">
-                                <img :src="productData.info.data[0].mainImg[0].url" class="img-responsive img1">
+                                <img :src="productData.info.data[0].mainImg[0].url" class="img-responsive img1" :data-id="productData.info.data[0].id" @click="intoDetail">
                             </div>
                             <div v-if="productData.info.data[1].mainImg">
-                                <img :src="productData.info.data[0].mainImg[1].url" class="img-responsive">
+                                <img :src="productData.info.data[0].mainImg[1].url" class="img-responsive"
+                                 :data-id="productData.info.data[0].id" @click="intoDetail">
                             </div>
                         </div>
                         <div class="introImg_right" v-if="productData.info.data[0].mainImg[2]">
-                            <img :src="productData.info.data[0].mainImg[2].url" class="img-responsive">
+                            <img :src="productData.info.data[0].mainImg[2].url" class="img-responsive"
+                             :data-id="productData.info.data[0].id" @click="intoDetail">
                         </div>
                     </div>
-                    <div class="intro_right" v-if="productData.info.data[0].content" :data-id="productData.info.data[0].id" @click="intoDetail">
-                        <div class="introRight_tlt" :data-id="productData.info.data[0].id" @click="intoDetail">
-                            <p class="p1" v-html="productData.info.data[0].content" :data-id="productData.info.data[0].id" @click="intoDetail"></p>
+                    <div class="intro_right" v-if="productData.info.data[0].content">
+                        <div class="introRight_tlt">
+                            <div class="p1" v-html="productData.info.data[0].content"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="works">
             <img src="images/about_bg.jpg" class="img-responsive about_bg">
                 <div class="works_cont">
@@ -141,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-        </div>
+        </div> 
         <div class="team">
             <div class="team_tlt"  v-if="productData.info.data[3]">
                 <h6>{{productData.info.data[3].title}}</h6>
@@ -198,14 +202,14 @@
                 </div>
                 <div class="news_right"> 
                     <div class="news_list">
-                        <div class="news_item" v-for="item in newsData" :data-id="item.id"  @click="intoDetail">  
-                            <div class="news_desc" style="height:100%;" :data-id="item.id"  @click="intoDetail">
-                                <div style="height:37%;overflow: hidden;" :data-id="item.id"  @click="intoDetail">
-                                    <span class="small_tltl">{{item.title}}</span>
-                                    <a class="news_date">{{item.create_time}}</a>
+                        <div class="news_item" v-for="item in newsData">  
+                            <div class="news_desc" style="height:100%;" :data-id="item.id" @click="intoDetail">
+                                <div style="height:37%;overflow: hidden;" :data-id="item.id" @click="intoDetail">
+                                    <span class="small_tltl"  :data-id="item.id" @click="intoDetail">{{item.title}}</span>
+                                    <a class="news_date"  :data-id="item.id" @click="intoDetail">{{item.create_time}}</a>
                                 </div>
-                                <div style="height:63%;overflow: hidden;" :data-id="item.id"  @click="intoDetail">
-                                    <p>{{item.description}}</p>
+                                <div style="height:63%;overflow: hidden;"  :data-id="item.id" @click="intoDetail">
+                                    <p  :data-id="item.id" @click="intoDetail">{{item.description}}</p>
                                 </div>
                             </div>
                         </div>

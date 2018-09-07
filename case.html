@@ -23,6 +23,7 @@
 <script src="js/browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/base.js" type="application/javascript"></script>
+<script src="js/rem.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <style> 
 
@@ -84,24 +85,24 @@
             <template v-for="(item,index) in mainData">
                  <div>{{test(index)}}</div>
                 <div v-if="article_index==1||article_index==2" class="case_list" id="item1">
-                    <div class="case_left item1_left">
-                        <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive">
-                        <h6 class="pro_h">{{item.title}}</h6>
-                        <p class="pro_p">{{item.description}}</p>
+                    <div class="case_left item1_left" :data-id="item.id" @click="intoDetail">
+                        <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive"  :data-id="item.id" @click="intoDetail">
+                        <h6 class="pro_h" :data-id="item.id" @click="intoDetail">{{item.title}}</h6>
+                        <p class="pro_p"  :data-id="item.id" @click="intoDetail">{{item.description}}</p>
                     </div>
                 </div>
                 <div v-if="article_index==3||article_index==4" class="case_list" id="item2">
-                    <div class="case_left item1_left">
-                        <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive">
-                        <h6 class="pro_h">{{item.title}}</h6>
-                        <p class="pro_p">{{item.description}}</p>
+                    <div class="case_left item1_left" :data-id="item.id" @click="intoDetail">
+                        <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive" :data-id="item.id" @click="intoDetail">
+                        <h6 class="pro_h" :data-id="item.id" @click="intoDetail">{{item.title}}</h6>
+                        <p class="pro_p" :data-id="item.id" @click="intoDetail">{{item.description}}</p>
                     </div>
                 </div>
                 <div v-if="article_index==5||article_index==6" class="case_list" id="item3">
-                    <div class="case_left item1_left">
-                        <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive">
-                        <h6 class="pro_h">{{item.title}}</h6>
-                        <p class="pro_p">{{item.description}}</p>
+                    <div class="case_left item1_left" :data-id="item.id" @click="intoDetail">
+                        <img :src="item.mainImg&&item.mainImg.length>0?item.mainImg[0].url:''" class="img-responsive" :data-id="item.id" @click="intoDetail">
+                        <h6 class="pro_h" :data-id="item.id" @click="intoDetail">{{item.title}}</h6>
+                        <p class="pro_p" :data-id="item.id" @click="intoDetail">{{item.description}}</p>
                     </div>
                 </div>
             </template>
@@ -129,9 +130,7 @@
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript " src="js/bootstrap.js"></script>
 <script src="js/my.js"></script>
-<script src="js/rem.js"></script>
 <script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.js"></script>
 <script type="text/babel">
             var app = new Vue({
                 el: '#app',
@@ -290,12 +289,11 @@
                         window.location.href="./product.html?id="+art_id;
                     },
 
-                    intoDetail(e){
+                     intoDetail(e){
                         var self = this;
                         var art_id = window.base.getDataSet(e).id;
                         window.location.href="./detail.html?id="+art_id;
                     },
-
                 }
             }); 
 

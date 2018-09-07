@@ -20,6 +20,7 @@
     <script src="js/browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/base.js" type="application/javascript"></script>
+    <script src="js/rem.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 </head>
 
@@ -60,9 +61,12 @@
             <div class="video">
                 <div class="video_cont">
                     <div class="video_left hidden-xs hidden-sm"  >
-                        <a href="#" v-if="videoData[0].bannerImg&&videoData[0].bannerImg.length>0">
+                        <!-- <a href="#" v-if="videoData[0].bannerImg&&videoData[0].bannerImg.length>0">
                              <img :src="videoData[0].bannerImg[0].url" class="img-responsive">
-                        </a>
+                        </a> -->
+                        <video width="100%" height="100%" controls>
+                          <source src="media/video.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="video_right">
                         <div class="right_cont">
@@ -181,7 +185,7 @@
     </div>
     <div id="footer">
     </div>
-    <!-- <div id="preloader" style="display: block;">
+   <!--  <div id="preloader">
         <div id="loading-wrapper">
           <div id="loading-text">LOADING</div>
           <div id="loading-content"></div>
@@ -350,11 +354,13 @@
 
      
     <script type="text/javascript">
-        
-    $(window).load(function() {
+   
+    setTimeout(function(){
         $("#loading-wrapper").fadeOut(); 
-        $("#preloader").delay(350).fadeOut("slow");
+        $("#preloader").fadeOut();
+    },300)
 
+    $(document).ready(function() {
         $('.video').waypoint(function(direction) {
         if (direction === 'down' && !$(this.element).hasClass('animated')) {
             $('.video .process_item').each(function(k) {
@@ -365,11 +371,12 @@
                 }, k * 200, 'easeInOutExpo');
             });
         }
+        console.log(999)
     }, {
         offset: '600px'
 
     });
-        console.log(999)
+
      $('.product').waypoint(function(direction) {
 
         if (direction === 'down' && !$(this.element).hasClass('animated')) {

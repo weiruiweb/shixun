@@ -79,6 +79,9 @@
 	.pro_h{
 		font-size: 0.28rem;
 	}
+	.item4 .product_des{
+		left:45%;
+	}
 }
 @media (min-width:1200px){
  
@@ -112,7 +115,7 @@
 	}
 	.works_img img{
 		max-width: 90%;
-		margin:0.1rem auto;
+		margin:0.2rem auto;
 	}
 	.news_cont{
 		width:98%;
@@ -168,6 +171,7 @@
 }
 
 @media (max-width: 991px) {
+	.navlist>li dl dt{font-size: 12px;}
 	.search input{
 		width:75%;
 		padding-left: 0.1rem;
@@ -185,7 +189,6 @@
 	}
 	.menu_all .nav_container{
 		width:100%;
-		padding:0.8rem 0 0;
 	}
 	.menu_ul{
 		padding: 0;
@@ -224,7 +227,7 @@
 	}
 	.works_img img{
 		max-width: 90%;
-		margin:0.1rem auto;
+		margin:0.2rem auto;
 	}
 	.works_second{
 		margin-top: 0.3rem;
@@ -295,6 +298,10 @@
 		white-space:nowrap;
 		overflow: hidden;
 	}
+	.video_right{
+		width:80%;
+		margin-left:10%;
+	}
 	
 }
 @media(min-width:768px ) and (max-width:991px){
@@ -304,10 +311,17 @@
 		.product_des a{
 			margin-top: 0.2rem;
 		}
+		.menu li> a{font-size: 0.2rem;}
+		.news_date{
+			width:1.3rem;
+		}
 }
 
 
 @media (max-width: 768px) {
+	.detail_left img{
+		margin:0 auto;
+	}
 	.detail_tlt .p2{
 		height:2.4rem;
 	}
@@ -531,7 +545,7 @@
 		display: none;
 	}
 	.video{
-		min-height:18rem;
+		min-height:12rem;
 	}
 	.video_left{text-align: center;}
 	.video_left,.video_right{
@@ -559,11 +573,9 @@
 	.case_list{
 		width: 80%;
 	}
-	.case_list img{
-		max-width: 80%;
-	}
-	.case_left,.case_right{
-		width: 45%;
+	
+	.case_left{
+		width: 60%;
 	}
 	.pro_h{
 		font-size:0.32rem;
@@ -610,7 +622,7 @@
 		font-size: 14px;
 	}
 	.right_cont .description{
-		font-size: 0.36rem;
+		font-size: 0.3rem;
 	}
 	.tlt_all{
 		height:2rem;
@@ -702,7 +714,13 @@
 		margin-bottom: 0.4rem;
 	}
 	.banner{
-		height:8rem;
+		min-height:5rem;
+	}
+	.detail_cont p{
+		line-height: 0.4rem;
+	}
+	.news_date{
+		width:1.3rem;
 	}
 	}
 
@@ -728,11 +746,19 @@
 	.team_cont{
 		width: 100%;
 	}
+	.news_date{
+		width:2rem;
+	}
 }
 
 @media (max-width: 480px) {
-	
-	.works_img{}
+	.news_date{
+		width:2.4rem;
+		height:0.6rem;
+	}
+	.video_right{
+		margin-left: 0;
+	}
 	.detail_cont p{
 		line-height: 0.6rem;
 	}
@@ -965,7 +991,7 @@
 		padding:0.5rem;
 	}
 	.video{
-		min-height:20rem;
+		min-height:14rem;
 	}
 	.pro_h{
 		font-size:0.38rem;

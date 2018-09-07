@@ -23,6 +23,38 @@
     <script src="js/base.js" type="application/javascript"></script>
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script src="js/rem.js"></script>
+    <script>
+
+        var isIE = function(){ 
+            return (window.navigator.userAgent.indexOf("MSIE")>=1);  
+        }
+
+        // 修复IE10及以下版本不支持dataset属性的问题，兼容transfer-dom.js中使用了dataset的问题
+        if (isIE() && window.HTMLElement) {
+            if (Object.getOwnPropertyNames(HTMLElement.prototype).indexOf('dataset') === -1) {
+                Object.defineProperty(HTMLElement.prototype, 'dataset', {
+                    get: function() {
+                        var attributes = this.attributes;
+                        var name = [],
+                            value = [];
+                        var obj = {};
+                        for (var i = 0; i < attributes.length; i++) {
+                            if (attributes[i].nodeName.slice(0, 5) == 'data-') {
+                                name.push(attributes[i].nodeName.slice(5));
+                                value.push(attributes[i].nodeValue);
+                            }
+                        }
+                        for (var j = 0; j < name.length; j++) {
+                            obj[name[j]] = value[j];
+                        }
+                        return obj;
+                    }
+                });
+            }
+        }
+
+
+        </script>
 </head>
 <body>
     
@@ -175,6 +207,7 @@
                 linkPage: '',
                 productMenu:[],
                 caseMenu:[],
+                firstMenu:[],
                 menu:[]
             }
 
@@ -209,12 +242,15 @@
             },
             menuShow: function(e) {
                 var self =this;
-                var dataSet = window.base.getDataSet(e);                
-                self.computer_id = dataSet.computer_id;                    
+                console.log(e);
+                var dataSet = window.base.getDataSet(e);          
+                console.log('dataSet',dataSet);   
+                if(dataSet.computer_id){
+                   self.computer_id = dataSet.computer_id;  
+                }              
             },
             menuHide: function(e) {
-                var self =this;
-                              
+                var self =this;                              
                 self.computer_id = '';                    
             },
 
@@ -225,6 +261,7 @@
                     var postData = {
                         searchItem:{
                             title: ['LIKE',['%'+self.searchData+'%']],
+                            description:['LIKE',['%'+self.searchData+'%']],
                         },
                         order:{
                           listorder:'desc'
@@ -257,6 +294,7 @@
                 var callback = function(res) {
                     console.log(res);
                     self.menu = res.info.data;
+                    self.firstMenu = res.info.data.pop();
                     self.productMenu = window.base.findKeyFromArray(self.menu,'title','产品中心')[0];
                     console.log(self.productMenu)
                     var length=self.productMenu['child'].length;
@@ -299,17 +337,6 @@
                 if(url){
                     window.location.href= url;
                 };
-                console.log(url);
-                console.log(dataSet);
-                
-                /*console.log(self.computer_id);
-                if(self.computer_id == 386){
-                    window.location.href="./product.html";
-                }else if(self.computer_id == 389){
-                   window.location.href="./case.html";
-                }else if(self.computer_id == 401){
-                     window.location.href="./about.html";
-                }*/
             },
 
  
