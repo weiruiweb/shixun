@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>视讯科技</title>
+<!-- custom-theme -->
+<meta name="baidu-site-verification" content="z8EeuYl0nS" />
+<meta name="keywords" content="视讯科技">
+<meta name="description" content="视讯科技">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+<!-- //custom-theme -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/basic.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/responsive.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/hover.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/animate.css" rel="stylesheet" type="text/css" media="all" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<script src="js/browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/base.js" type="application/javascript"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<style> 
+
+</style>
+</head>
+<body>
+<div class="configHead"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.configHead').load('./header.html');
+        });
+    </script>
+<div id="app">
+    <div class="zhuzuo">
+        <div class="zhuzuo_cont">
+            <div class="works_first works_second" >
+                <div class="works_tlt">
+                    <p class="zh_tlt">专利证书</p>
+                </div>
+                <div class="works_show">
+                    <div class="works_item" v-for="item in mainData">
+                        <img :src="item.mainImg[0].url" class="img-responsive" :data-id="item.id" @click="intoDetail">
+                    </div>  
+                   
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="fenye">
+            <span>
+                共：{{allPages}}页
+            </span>
+            <a class="pages backPage" data-type="back" @click="changePage">上一页</a>
+            <span v-for="item in pageArray">
+                <a v-if="item == paginate.currentPage" class="currentpages active" >{{item}}</a>
+                <a v-if="item != paginate.currentPage" class="currentpages" :data-page="item"  @click="linkTo">{{item}}</a>
+            </span>
+            <a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
+            <span>
+                跳转至：
+                <input style="border:1px solid black;" :data-page="linkPage" v-model="linkPage" @blur="linkTo" />
+            </span>
+        </div>  
+</div>
+<script type="text/javascript " src="js/bootstrap.js"></script>
+<script src="js/my.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.js"></script>
+<script type="text/babel">
+            var app = new Vue({
+                el: '#app',
+                data: function() {
+                    return {
+                        productData:[],
+                        labelData:[],
+                        mainData:[],
+                        paginate: {
+                            count: 0,
+                            currentPage: 1,
+                            pagesize: 16,
+                            is_page: true,
+                        },
+                        searchItem:{
+                            thirdapp_id: 59,
+                        },
+                        pageArray:[],
+                        allPages:0,
+                        linkPage:'',
+                        aboutMenu:{},
+                    }
+
+                },
+                
+                created: function () {
+                    this.getMainData();
+                },
+                methods:{
+                     getMainData() {
+                        var self = this;                    
+                        var postData = {
+                            count: 0,
+                            currentPage: 1,
+                            pagesize:6,
+                            is_page:true,
+                            searchItem:{
+                                thirdapp_id:59,
+                                menu_id:417
+                            }
+                        };
+                        var self = this;
+                        postData.paginate = window.base.cloneForm(self.paginate);
+                        var callback = (res)=>{                            
+                            self.mainData = res.info.data;
+                            self.paginate['count'] = res.info.total;
+                            window.base.computePageArr(self);
+                        };
+                        window.base.articleList(postData,callback);
+                    },
+                    
+                    changePage(e){
+                        var self = this;
+                        var dataSet = window.base.getDataSet(e);
+                        window.base.changePage(dataSet,self);
+                    },
+                    linkTo(e){
+                        var self = this;
+                        self.linkPage = window.base.getDataSet(e).page;
+                        window.base.linkTo(self);
+                        
+                    },
+                    intoDetail(e) {
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href = "./detail.html?id=" + art_id;
+                    },
+
+                }
+            });
+</script>
+
+</body>
+</html>

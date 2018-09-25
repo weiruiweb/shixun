@@ -15,71 +15,7 @@ $(function(){
 	})
 
 });
-$(window).load(function() {
-    
 
-     $('.video').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-
-
-            $('.video .process_item').each(function(k) {
-                var el = $(this);
-
-                setTimeout(function() {
-                    el.addClass('fadeInDown animated');
-                }, k * 200, 'easeInOutExpo');
-
-            });
-
-        }
-    }, {
-        offset: '600px'
-
-    });
-     $('.product').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-
-
-            $('.product_cont').each(function(k) {
-                var el = $(this);
-
-                setTimeout(function() {
-                    el.addClass('fadeInLeft animated');
-                }, 1 * 100, 'easeInOutExpo');
-
-            });
-        $('.product_cont1').each(function(k) {
-                        var el = $(this);
-
-                        setTimeout(function() {
-                            el.addClass('fadeInRight animated1');
-                        }, 1 * 100, 'easeInOutExpo');
-
-                    });
-
-        }
-    }, {
-        offset: '200px'
-
-    });
-
-     $('.case').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-    
-           $('.caseLeft').addClass('fadeInLeft animated');  
-           $('.caseRight').addClass('fadeInRight animated');
-          
-        }
-    }, {
-        offset: '100px'
-
-    });
-
-
-});
 
 
 

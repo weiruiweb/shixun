@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta name="baidu-site-verification" content="z8EeuYl0nS" />
+    <meta name="keywords" content="视讯科技">
+    <meta name="description" content="视讯科技">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/basic.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/responsive.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript " src="js/bootstrap.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/base.js" type="application/javascript"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/rem.js"></script>
+    <script>
+
+        var isIE = function(){ 
+            return (window.navigator.userAgent.indexOf("MSIE")>=1);  
+        }
+
+        // 修复IE10及以下版本不支持dataset属性的问题，兼容transfer-dom.js中使用了dataset的问题
+        if (isIE() && window.HTMLElement) {
+            if (Object.getOwnPropertyNames(HTMLElement.prototype).indexOf('dataset') === -1) {
+                Object.defineProperty(HTMLElement.prototype, 'dataset', {
+                    get: function() {
+                        var attributes = this.attributes;
+                        var name = [],
+                            value = [];
+                        var obj = {};
+                        for (var i = 0; i < attributes.length; i++) {
+                            if (attributes[i].nodeName.slice(0, 5) == 'data-') {
+                                name.push(attributes[i].nodeName.slice(5));
+                                value.push(attributes[i].nodeValue);
+                            }
+                        }
+                        for (var j = 0; j < name.length; j++) {
+                            obj[name[j]] = value[j];
+                        }
+                        return obj;
+                    }
+                });
+            }
+        }
+
+
+        </script>
+</head>
+<body>
+    
+<div id="h_app" style="width:100%">
+    <div class="navs">
+       <div class="navbox">
+            <div class="nav_container">
+                <a class="phone_logo" href="inedx.html"><img src="images/logo.png" class="img-responsive"></a>
+                <div class="search">
+                    <input type="text" placeholder="请输入关键字" v-model="searchData" v-on:keyup.13="search"/><!-- @keyup.enter="searchEnterFun" -->
+                    <div class="search_btn" @click="search" >
+                     <img src="images/seach.png" class="img-responsive">
+                    </div>
+                </div>
+                <div  @click="toggleMenu" id="click_menu">
+                        <img src="images/nav.png">
+                </div>
+                <div class="computer">
+                    <div class="index_nav">
+                         <ul class="navlist fix" id="phone_navlist"  >
+                            <li class="this_li1"  v-for="(item, index) in menu" :data-computer_id="item.id" 
+                            :data-url="item.url" @click="intoUrl">
+                                <a  :data-computer_id="item.id"  @mouseover="menuShow" :data-url="item.url" @click="intoUrl">{{item.title}}</a>
+                                <div  class="menu_all" id="second_menu1" :class="(computer_id==item.id?'after1':'orgin1')" >
+                                    <div style="width: 100%;background: rgba(0,0,0,0.8);">
+                                        <div class="nav_container">
+                                            <ul class="menu" v-if="labelData">
+                                                <li v-if="productMenu&&productMenu.child" v-for="(c_item, c_index) in item.child"> 
+                                                    <a  :data-url="c_item.url"  @click="intoList">{{c_item.title}}</a>
+                                                    <dl class="small_menu small_menus" v-if="item.child" v-for="(cc_item, cc_index) in c_item.child" :data-id="cc_index">
+                                                        <dt :data-id="cc_item.id"  @click="intoDetail"><span  :data-id="cc_item.id"  @click="intoDetail">{{cc_item.title}}</span></dt>       
+                                                    </dl>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div @mouseover="menuHide" style="width:100%;height:30px;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phone" style="position: absolute;z-index: 99;width:100%;left:0;top:1.8rem;">
+                    <div class="orgin"  :class="(is_show?'after':'')">
+                        <div id="phone_menu" v-for="(item, index) in menu">
+                            <div class="phone_menus" :data-show_id="item.id"  @click="toggleMenu"  :style="(show_id==item.id?'background:rgba(254,133,30,0.5)':'')">
+                                {{item.title}}
+                                <div class="click_into"  :data-show_id="item.id"  @click="intoPage">→</div>
+                            </div>
+                            <div class="c_p_child">
+                                <div class="orgin"  :class="(show_id==item.id&&item.child?'after':'')" v-for="(c_item, c_index) in item.child" >
+                                    <div :data-show_child_id="c_item.id" @click="toggleMenu" class="c_child" >
+                                        {{c_item.title}}
+                                    </div>
+                                    <div
+                                        v-show="show_child_id==c_item.id&&c_item.child" 
+                                        class="orgin"  :class="(show_child_id==c_item.id&&c_item.child?'after':'')"
+                                        v-for="(cc_item, cc_index) in c_item.child"    
+                                    >
+                                        <div class="last_child" :data-id="cc_item.id" @click="intoDetail">
+                                            {{cc_item.title}}
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+    
+</body>
+<style >
+    .orgin{
+        width:100%;
+        opacity: 0;
+        height: 0;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height .5s ease-out;
+    }
+    .after{
+        opacity: 1;
+        max-height: 1000px;
+        height: auto;
+/*        max-height: 250px;*/
+        -webkit-animation: slide-down .5s ease-in;
+        transition: max-height .5s ease-in;
+        transform-origin: 50% 0;
+    }
+    .orgin1{
+        width:100%;
+        height: 0;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 1s ease-out;
+    }
+    .after1{
+        max-height: 1000px;
+        height: auto;
+/*        max-height: 250px;*/
+        transition: max-height 2s ease-in;
+        transform-origin: 50% 0;
+    }
+    @-webkit-keyframes slide-down{
+        0%{transform: scale(1,0);}
+        25%{transform: scale(1,1.2);}
+        50%{transform: scale(1,0.85);}
+        75%{transform: scale(1,1.05);}
+        100%{transform: scale(1,1);}
+    }
+</style>
+
+<script type="text/javascript">
+    var h_app = new Vue({
+        el: '#h_app',
+        data: function() {
+            return {
+                bannerData: [],
+                productData: [],
+                caseData: [],
+                labelData: [],
+                searchData:'',
+                paginate: {
+                    count: 0,
+                    currentPage: 1,
+                    pagesize: 6,
+                    is_page: true,
+                },
+                searchItem: {
+                    thirdapp_id: 59,
+                    menu_id: 385,
+                },
+                show_id:'',
+                show_child_id:'',
+                computer_id:'',
+                art_id:'',
+                li_number:1,
+                is_show:false,
+                is_show1:true,
+                pageArray: [],
+                allPages: 0,
+                linkPage: '',
+                productMenu:[],
+                caseMenu:[],
+                firstMenu:[],
+                menu:[]
+            }
+
+        },
+
+        created: function() {
+            this.getMainData();
+        },
+        methods: {
+            toggleMenu: function(e) {
+                var self = this;
+                var dataSet = window.base.getDataSet(e);
+                if(dataSet.show_id){
+                    if(self.show_id==dataSet.show_id){
+                        self.show_id = '';
+                    }else{
+                        self.show_id = dataSet.show_id;
+                    };
+                }else if(dataSet.show_child_id){
+                    if(self.show_child_id==dataSet.show_child_id){
+                        self.show_child_id = '';
+                    }else{
+                        self.show_child_id = dataSet.show_child_id;
+                    };
+                }else{
+                    self.is_show = !self.is_show;
+                    self.show_child_id = '';
+                    self.show_id = '';
+                };
+                
+                console.log(self.is_show)
+            },
+            menuShow: function(e) {
+                var self =this;
+                console.log(e);
+                var dataSet = window.base.getDataSet(e);          
+                console.log('dataSet',dataSet);   
+                if(dataSet.computer_id){
+                   self.computer_id = dataSet.computer_id;  
+                }              
+            },
+            menuHide: function(e) {
+                var self =this;                              
+                self.computer_id = '';                    
+            },
+
+            search: function(e) {
+                var self =this;
+                if(self.searchData){
+                    window.location.href=encodeURI("./search.html?searchData="+self.searchData);    
+                }   
+            },
+                
+            getMainData: function() {
+                var self = this;
+                var postData = {
+                    searchItem:{
+                        thirdapp_id: 59,
+                    },
+                    order:{
+                      listorder:'desc'
+                    }
+                };
+                var callback = function(res) {
+                    console.log(res);
+                    self.menu = res.info.data;
+                    self.firstMenu = res.info.data.pop();
+                    self.productMenu = window.base.findKeyFromArray(self.menu,'title','产品中心')[0];
+                    console.log(self.productMenu)
+                    var length=self.productMenu['child'].length;
+                    self.menu_array = [];
+                    for(var i=0;i<length;i++){  
+                        if(self.productMenu['child'][i]['child']){
+                            var child_length = self.productMenu['child'][i]['child'].length;
+                            for(var c_i=0;c_i<child_length;c_i++){
+                                self.menu_array.push(self.productMenu['child'][i]['child'][c_i].id)
+                            };
+                        };
+                    };
+
+                    self.caseMenu = window.base.findKeyFromArray(self.menu,'title','行业案例')[0]; 
+                    var lengthTwo= self.caseMenu['child'].length;
+                    self.menu_array_two = [];
+                    for(var i=0;i<lengthTwo;i++){  
+                        if(self.caseMenu['child'][i]['child']){
+                            var child_lengthTwo = self.caseMenu['child'][i]['child'].lengthTwo;
+                            for(var c_i=0;c_i<child_length;c_i++){
+                                self.menu_array_two.push(self.caseMenu['child'][i]['child'][c_i].id)
+                            };
+                        };
+                    };
+                };
+                window.base.labelGet(postData, callback);
+            },
+
+            intoCaseDetail: function(e) {
+                var self = this;
+                var computer_id = window.base.getDataSet(e).id;
+                window.location.href="./case.html?id="+art_id;
+            },
+
+            intoUrl: function(e) {
+                var self =this;
+                var dataSet = window.base.getDataSet(e);                
+                self.computer_id = dataSet.computer_id;  
+                var url = dataSet.url; 
+                if(url){
+                    window.location.href= url;
+                };
+            },
+            intoDetail: function(e) {
+                var self = this;
+                var art_id = window.base.getDataSet(e).id;
+                window.location.href="./detail1.html?id="+art_id;
+            },
+            intoList: function(e) {
+                var self = this;
+                var url = window.base.getDataSet(e).url;
+                if(url){
+                    window.location.href = url;
+                }
+                console.log()
+            },
+            intoPage: function(e) {
+                var self =this;
+                var dataSet = window.base.getDataSet(e);                
+                self.show_id = dataSet.show_id;
+                console.log(self.show_id);
+                if(self.show_id == 380){
+                    window.location.href="./about.html";}
+                if(self.show_id == 386){
+                    window.location.href="./product.html";
+                }else if(self.show_id == 389){
+                   window.location.href="./case.html";
+                }else if(self.show_id == 401){
+                     window.location.href="./about.html";
+                }
+            },
+        }
+    });
+
+   
+</script>
+<script >
+    var w = $(document).width();
+    $("#phone_navlist li:eq(1)").addClass("this_li");
+   // console.log("niaho")
+    if(w>768){
+        $(".phone").css("display","none")
+        $(".menu li:eq(9)").css("clear","both");
+
+        $("#click_menu").css("display","none");
+    }else{
+        $(".computer").css("display","none")
+    }
+</script>
+</html>
+
+
+
+

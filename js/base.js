@@ -1,5 +1,5 @@
 window.base={
-    g_restUrl:'http://solelytech.iicp.net/cmsygr/public/index.php/api/v1/',
+    g_restUrl:'http://www.visione.com.cn/shixun/public/index.php/api/v1/',
 
     getData:function(params){
         if(!params.type){
@@ -64,6 +64,7 @@ window.base={
         this.getData(allParams)
     },
 
+    
 
     articleOne:function(param,callback) {
         var allParams = {
@@ -146,18 +147,47 @@ window.base={
         return e.target.dataset; 
     },
 
+
+    getDataset:function(ele){
+        if(ele.dataset){
+            return ele.dataset;
+        }else{
+            var attrs = ele.attributes,//元素的属性集合
+                dataset = {},
+                name,
+                matchStr;
+
+            for(var i = 0;i<attrs.length;i++){
+                //是否是data- 开头
+                matchStr = attrs[i].name.match(/^data-(.+)/);
+                if(matchStr){
+                    //data-auto-play 转成驼峰写法 autoPlay
+                    name = matchStr[1].replace(/-([\da-z])/gi,function(all,letter){
+                        return letter.toUpperCase();
+                    });
+                    dataset[name] = attrs[i].value;
+                }
+            }
+            return dataset;
+        }
+    },
+
+
+
     findKeyFromArray:function(Array,key,value) {  
         var new_array = []; 
         for (var i = 0; i < Array.length; i++) {
+            
             if(Array[i][key]&&Array[i][key] == value){
                 new_array.push(Array[i])
+                console.log('Array',Array[i])
             };
         };
         return new_array; 
     },
     
     GetRequest:function() {  
-       var url = location.search; //获取url中"?"符后的字串  
+       var url = decodeURI(location.search); //获取url中"?"符后的字串  
        var theRequest = new Object();  
        if (url.indexOf("?") != -1) {  
           var str = url.substr(1);  //去掉“？”
@@ -169,10 +199,22 @@ window.base={
        return theRequest;  
     },
 
+    getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+         return vars;
+    }, 
+
 
     computePageArr:function(self) {   
         self.allPages = Math.ceil(self.paginate['count']/self.paginate['pagesize']);
         console.log(self.allPages);
+        console.log(self.paginate);
         self.pageArray = [];
         self.pageArray.push(self.paginate.currentPage);
         if(self.paginate.currentPage+1 <= self.allPages){

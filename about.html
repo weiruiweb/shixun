@@ -23,344 +23,189 @@
 <script src="js/browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/base.js" type="application/javascript"></script>
+<script src="js/rem.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <style> 
-
+.menu{
+    width:50%;
+    float: right;
+}
+.menu li{
+    width:25%;
+}
 </style>
 </head>
 <body>
+<div class="configHead"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.configHead').load('./header.html');
+            $("#footer").load('./footer.html');
+        });
+    </script>    
 <div id="app">
-    <header >
-    <div class="navs">
-       <div class="navbox">
-            <div class="nav_container">
-                <a class="phone_logo"><img src="images/logo.png" class="img-responsive"></a>
-                <div class="search">
-                    <input type="text" placeholder="请输入关键字" />
-                    <div class="search_btn">
-                     <img src="images/seach.png" class="img-responsive">
-                    </div>
-                </div>
-                <div class="index_nav">
-                     <ul class="navlist fix" id="phone_navlist">
-                        <li class=""><a href="inedx.html">首页</a></li>
-                        <li onmouseover="second_show1()">
-                            <a href="product.html">产品中心</a></li>
-                        <li class="this_li" onmouseover="second_show2()">
-                            <a href="case.html">行业案例</a>
-                        </li>
-                        <li>
-                            <a href="about.html">
-                                关于我们
-                               
-                             </a>
-                        </li>
-                    </ul>
-            </div>
-        </div>
-           <div class="menu_all" id="second_menu1" style="display: block">
-                <div class="nav_container">
-                    <ul class="menu" v-if="labelData">
-                        <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-if="productMenu&&productMenu.child" v-for="item in productMenu.child"> 
-                            <a href="#" >{{item.title}}</a>
-                            <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoProductDetail">
-                                <dt ><a href="#" :data-id="item1.id" @click="intoProductDetail">{{item1.title}}</a></dt>       
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        <div class="menu_all" id="second_menu2">
-            <div class="nav_container">
-                <ul class="menu" v-if="labelData">
-                    <li onmouseover="menuShow(this)" onmouseout="menuHidden(this)" v-if="caseMenu&&caseMenu.child" v-for="item in caseMenu.child">
-                        <a href="#" >{{item.title}}</a>
-                        <dl class="small_menu small_menus" v-if="item.child" v-for="item1 in item.child" :data-id="item1.id" @click="intoCaseDetail">
-                            <dt ><a href="#" :data-id="item1.id" @click="intoCaseDetail">{{item1.title}}</a></dt>           
-                        </dl>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-</header>
-    <div class="banner">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" class="active"></li>
-                <li data-target="#carousel-example-generic" ></li>
-            </ol>
-            <div class="banner_rightTxt">
-                <span>SHI XUN KE JI</span>
-            </div>
-            <div class="carousel-inner" role="listbox">
-                <div class="item active" >
-                  <img src="images/banner.jpg" alt="..." class="img-responsive">
-                </div>
-                <div class="item" >
-                  <img src="images/banner.jpg" alt="..." class="img-responsive">
-                </div>
-            </div>
-            <div class="container">
-                <div class="banner_content">
-                    <span>SHI XUN KE JI</span>
-                    <p>智能交通事件检测器</p>
-                    <p>视频监控平台</p>
-                    <a class="hidden-xs">Intelligent traffic event detector.Video monitoring platform.</a>
-                    <div class="watch_video">
-                        <a class="">观看视频</a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>  
-
-    </div>
     <div class="product_show">
-        <div class="kefu">
-                <img src="images/qq_icon.png" class="">
-                <p>QQ交谈</p>
-        </div>
-         <div class="product_title"> 
-                <p>COMPEANY PROFILE</p>
+        <div id="contact">
+                <div id="kefu" id="weixin">
+                    <div class="kefu" id="kefu1" onmouseover="wx_show()" onmouseout="wx_show1()">
+                        <img src="images/weixin_icon.png" class="kefu_img">
+                        <p>微信交流</p>
+                    </div>
+                     <div class="qcored">
+                        <img src="images/weixin.png">
+                    </div>
+                </div>
+                <div id="kefu">
+                    <div class="kefu">
+                        <img src="images/qq_icon.png" class="kefu_img">
+                        <p>QQ交谈</p>
+                    </div>
+                </div>
+            </div>
+         <div class="product_title" v-if="productData.info.data[0]"> 
+                <p>{{productData.info.data[0].small_title}}</p>
                 <h3>{{productData.info.data[0].title}}</h3>     
         </div>
         <div class="about_content">
             <div id="about">
                 <div class="introduce">
                     <div class="intro_left">
-                        <div class="introImg_left">
-                            <img src="images/intro1.jpg" class="img-responsive img1">
-                            <img src="images/intro2.jpg" class="img-responsive">
+                        <div class="introImg_left" v-if="productData.info.data[0].mainImg"  :data-id="productData.info.data[0].id" @click="intoDetail">
+                            <div v-if="productData.info.data[0].mainImg">
+                                <img :src="productData.info.data[0].mainImg[0].url" class="img-responsive img1" :data-id="productData.info.data[0].id" @click="intoDetail">
+                            </div>
+                            <div v-if="productData.info.data[1].mainImg">
+                                <img :src="productData.info.data[0].mainImg[1].url" class="img-responsive"
+                                 :data-id="productData.info.data[0].id" @click="intoDetail">
+                            </div>
                         </div>
-                        <div class="introImg_right">
-                            <img src="images/intro3.jpg" class="img-responsive">
+                        <div class="introImg_right" v-if="productData.info.data[0].mainImg[2]">
+                            <img :src="productData.info.data[0].mainImg[2].url" class="img-responsive"
+                             :data-id="productData.info.data[0].id" @click="intoDetail">
                         </div>
                     </div>
-                    <div class="intro_right">
+                    <div class="intro_right" v-if="productData.info.data[0].content">
                         <div class="introRight_tlt">
-                            <p class="p1" v-html="productData.info.data[0].content"></p>
+                            <div class="p1" v-html="productData.info.data[0].content"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <div class="works">
-        <img src="images/about_bg.jpg" class="img-responsive about_bg">
+        
+        <div class="works">
+            <img src="images/about_bg.jpg" class="img-responsive about_bg">
+                <div class="works_cont">
+                    <div class="works_first"  v-if="productData.info.data[1]">
+                        <div class="works_tlt">
+                            <p class="eng_tlt">{{productData.info.data[1].small_title}}</p>
+                            <p class="zh_tlt">{{productData.info.data[1].title}}</p>
+                        </div>
+                        <div class="works_show" >
+                            <div class="works_item" v-for="item in productData.info.data[1].bannerImg">
+                                <div class="works_img">
+                                    <img :src="item.url" class="img-responsive">
+                                </div>
+                            </div>                   
+                        </div>
+                    </div>
+                    <div class="works_first works_second"  v-if="productData.info.data[2]">
+                        <div class="works_tlt" >
+                            <p class="eng_tlt">{{productData.info.data[2].small_title}}</p>
+                            <p class="zh_tlt">{{productData.info.data[2].title}}</p>
+                        </div>
+                        <div class="works_show">
+                            <div class="works_item" v-for="item in productData.info.data[2].bannerImg">
+                                <div class="works_img">
+                                    <img :src="item.url" class="img-responsive">
+                                </div>
+                            </div>  
+                           
+                        </div>
+                    </div>
+                </div>
+        </div> 
+        <div class="team">
+            <div class="team_tlt"  v-if="productData.info.data[3]">
+                <h6>活力团队</h6>
+                <p>Dynamic Team</p>
+            </div>
+            <div  class="team_cont">
+                 <div id="carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active"  v-if="teamData[0]&&teamData[0].bannerImg">
+                          <div class="item_img" v-for="(item,index) in teamData[0].bannerImg"><img :src="item.url" alt="..." class="img-responsive"></div>
+                        </div>
+                        <div class="item" v-if="teamData[1]&&teamData[1].mainImg">
+                          <div class="item_img" v-for="(item,index) in teamData[1].mainImg"><img :src="item.url" alt="..." class="img-responsive"></div>
+                        </div>
+                        <div class="item" v-if="teamData[2]&&teamData[2].mainImg">
+                          <div class="item_img" v-for="(item,index) in teamData[2].mainImg"><img :src="item.url" alt="..." class="img-responsive"></div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control hidden-xs" href="#carousel" role="button" data-slide="prev">
+                        <img src="images/left.jpg">
+                    </a>
+                    <a class="right carousel-control hidden-xs" href="#carousel" role="button" data-slide="next">
+                        <img src="images/right.jpg">
+                    </a>
+                </div>     
+            </div>
+        </div>
+        <div class="coopperate">
+            <div class="team_tlt">
+                <h6>合作伙伴</h6>
+                <p>COOPERATIVE PARTNER</p>
+            </div>
+            <div class="coopper_cont">
+                <div class="cooper1">
+                    <div class="cooper_item" v-for="item in cooperData">
+                        <div class="cooper_intro">
+                            <img :src="item.bannerImg[0].url" class="img-responsive">
+                            <div class="cooper_txt">
+                                <p class="p1">{{item.title}}</p>
+                                <p class="p2">{{item.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="news">
+            <div class="title_all">
+                <div class="eng_tlt">COMPEANY PROFILE</div>
+                <div class="zh_tlt">公司新闻</div>
+            </div>
+            <div class="news_cont">
+                <div class="news_left">  
+                    <div class="news_img">    
+                        <img :src="newsData[0].mainImg&&newsData[0].mainImg.length>0?newsData[0].mainImg[0].url:''" class="img-responsive">
+                    </div>
+                </div>
+                <div class="news_right"> 
+                    <div class="news_list">
+                        <div class="news_item" v-for="item in newsData">  
+                            <div class="news_desc" style="height:100%;" :data-id="item.id" @click="intoDetail">
+                                <div style="height:37%;overflow: hidden;" :data-id="item.id" @click="intoDetail">
+                                    <span class="small_tltl"  :data-id="item.id" @click="intoDetail">{{item.title}}</span>
+                                    <a class="news_date"  :data-id="item.id" @click="intoDetail">{{item.create_time}}</a>
+                                </div>
+                                <div style="height:63%;overflow: hidden;"  :data-id="item.id" @click="intoDetail">
+                                    <p  :data-id="item.id" @click="intoDetail">{{item.description}}</p>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="works_cont">
-                <div class="works_first">
-                    <div class="works_tlt">
-                        <p class="eng_tlt">COMPEANY PROFILE</p>
-                        <p class="zh_tlt">{{productData.info.data[1].title}}</p>
-                    </div>
-                    <div class="works_show">
-                        <div class="works_item" v-for="item in productData.info.data[1].bannerImg">
-                            <div class="works_img">
-                                <img :src="item.url" class="img-responsive">
-                            </div>
-                        </div>                   
-                    </div>
-                </div>
-                <div class="works_first works_second">
-                    <div class="works_tlt" >
-                        <p class="eng_tlt">COMPEANY PROFILE</p>
-                        <p class="zh_tlt">{{productData.info.data[2].title}}</p>
-                    </div>
-                    <div class="works_show">
-                        <div class="works_item" v-for="item in productData.info.data[2].bannerImg">
-                            <div class="works_img">
-                                <img :src="item.url" class="img-responsive">
-                            </div>
-                        </div>  
-                       
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="team">
-        <div class="team_tlt">
-            <h6>{{productData.info.data[3].title}}</h6>
-            <p>DYNAMIC TEAM</p>
         </div>
-        <div  class="team_cont">
-             <div id="carousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active" v-for="item in productData.info.data[3].bannerImg">
-                      <div class="item_img"><img :src="item.url" alt="..." class="img-responsive"></div>
+    </div>
+        
 
-                    </div>
-                    <div class="item" v-for="item in productData.info.data[3].bannerImg">
-                       <div class="item_img"><img :src="item.url" alt="..." class="img-responsive"></div>
-                      
-                    </div>
-                </div>
-                <a class="left carousel-control hidden-xs" href="#carousel" role="button" data-slide="prev">
-                    <img src="images/left.jpg">
-                </a>
-                <a class="right carousel-control hidden-xs" href="#carousel" role="button" data-slide="next">
-                    <img src="images/right.jpg">
-                </a>
-            </div>     
-        </div>
-    </div>
-    <div class="coopperate">
-        <div class="team_tlt">
-            <h6>合作伙伴</h6>
-            <p>COOPERATIVE PARTNER</p>
-        </div>
-        <div class="coopper_cont">
-            <div class="cooper1">
-                <div class="cooper_item">
-                    <div class="cooper_intro">
-                        <img src="images/cooer1.jpg" class="img-responsive">
-                        <p class="p1">立诺企业管</p>
-                        <p class="p2">公司以小微企业为服务对象 专注于软件著作权</p>
-                    </div>
-                </div>
-                <div class="cooper_item">
-                    <div class="cooper_intro">
-                        <img src="images/cooper2.jpg" class="img-responsive">
-                        <p class="p1">立诺企业管</p>
-                        <p class="p2">公司以小微企业为服务对象 专注于软件著作权</p>
-                    </div>
-                </div>
-                <div class="cooper_item">
-                     <div class="cooper_intro">
-                        <img src="images/cooper3.jpg" class="img-responsive">
-                        <p class="p1">立诺企业管</p>
-                        <p class="p2">公司以小微企业为服务对象 专注于软件著作权</p>
-                    </div>
-                </div>
-                <div class="cooper_item">
-                     <div class="cooper_intro">
-                        <img src="images/cooper4.jpg" class="img-responsive">
-                        <p class="p1">立诺企业管</p>
-                        <p class="p2">公司以小微企业为服务对象 专注于软件著作权</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="news">
-        <div class="title_all">
-            <div class="eng_tlt">COMPEANY PROFILE</div>
-            <div class="zh_tlt">公司新闻</div>
-        </div>
-        <div class="news_cont">
-            <div class="news_left">  
-                <div class="news_img">    
-                    <img src="images/news.jpg" class="img-responsive">
-                </div>
-            </div>
-            <div class="news_right"> 
-                <div class="news_list">
-                    <div class="news_item">  
-                        <div class="news_data">    
-                            <div class="data_day">
-                                18
-                            </div>
-                             <div class="data_year">
-                                2018/8
-                            </div>
-                        </div>
-                        <div class="news_desc" style="height:100%;">
-                            <div class="small_tltl" style="height:37%;overflow: hidden;">
-                                边海防二代视频监控系统
-                            </div>
-                            <div style="height:63%;overflow: hidden;">
-                                <p>当前，各行各业加速开放进程，越来越多“裸泳”的公司将被动浮出 水面。当前，各行各业加速开放进程，越来越多“裸泳”的公司将被动浮出 水面<span class="hidden-xs hidden-sm">依靠行业政策红利获得的超额收益</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news_item">  
-                        <div class="news_data">    
-                            <div class="data_day">
-                                18
-                            </div>
-                             <div class="data_year">
-                                2018/8
-                            </div>
-                        </div>
-                        <div class="news_desc">
-                            <div class="small_tltl">
-                                边海防二代视频监控系统
-                            </div>
-                             <p>当前，各行各业加速开放进程，越来越多“裸泳”的公司将被动浮出 水面。<span class="hidden-xs  hidden-sm">依靠行业政策红利获得的超额收益</span></p>
-                        </div>
-                    </div>
-                    <div class="news_item">  
-                        <div class="news_data">    
-                            <div class="data_day">
-                                18
-                            </div>
-                             <div class="data_year">
-                                2018/8
-                            </div>
-                        </div>
-                        <div class="news_desc">
-                            <div class="small_tltl">
-                                边海防二代视频监控系统
-                            </div>
-                             <p>当前，各行各业加速开放进程，越来越多“裸泳”的公司将被动浮出 水面。<span class="hidden-xs  hidden-sm">依靠行业政策红利获得的超额收益</span></p>
-                        </div>
-                    </div>
-                    <div class="news_item">  
-                        <div class="news_data">    
-                            <div class="data_day">
-                                18
-                            </div>
-                             <div class="data_year">
-                                2018/8
-                            </div>
-                        </div>
-                        <div class="news_desc">
-                            <div class="small_tltl">
-                                边海防二代视频监控系统
-                            </div>
-                            <p>当前，各行各业加速开放进程，越来越多“裸泳”的公司将被动浮出 水面。<span class="hidden-xs  hidden-sm">依靠行业政策红利获得的超额收益</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer" style="margin-top: 1.5rem">
-        <img src="images/fotter.png" class="img-responsive footer_bg">
-        <div class="footer_cont">
-            <div class="contact">
-                Contact us
-            </div>
-            <ul>
-                <li>    
-                    <img src="images/footer_icon1.png" class="img-responsive">
-                    <a>地址：</a>
-                    <span>北京市海淀区天秀路10号建设大学1号楼A504 </span>
-                </li>
-                 <li>    
-                     <img src="images/footer_icon2.png" class="img-responsive">
-                    <a>电话：</a>
-                    <span>010-62670465    010- 64371051  </span>
-                </li>
-                 <li>    
-                     <img src="images/footer_icon3.png" class="img-responsive">
-                    <a>邮箱：</a>
-                    <span> shixun212@126.com  </span>
-                </li>
-                 <li>    
-                     <img src="images/footer_icon4.png" class="img-responsive">
-                    <a>QQ：</a>
-                    <span>7837386466 </span>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-    
-</div>
 </div>
 
+<div id="footer"></div>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript " src="js/bootstrap.js"></script>
 <script src="js/my.js"></script>
@@ -372,13 +217,17 @@
                 el: '#app',
                 data: function() {
                     return {
-                        bannerData:[],
+                        teamData:[],
                         productData:[],
                         labelData:[],
+                        monthData:[],
+                        cooperData:[],
+                        dayData:[],
+                        newsData:[],
                         paginate: {
                             count: 0,
                             currentPage: 1,
-                            pagesize: 6,
+                            pagesize: 20,
                             is_page: true,
                         },
                         searchItem:{
@@ -389,14 +238,16 @@
                         linkPage:'',
                         productMenu:{},
                         caseMenu:{},
-                        aboutMenu:{}
+                        aboutMenu:{},
                     }
 
                 },
                 
                 created: function () {
-                    this.getBannerData();
-                    this.getLabelData()
+                    this.getTeamData();
+                    this.getLabelData();
+                    this.getCooperData();
+                    this.getNewsData();
                 },
                 methods:{
 
@@ -407,15 +258,13 @@
                         postData.searchItem.menu_id = ['in',self.menu_array];
                         var callback = (res)=>{
                             self.productData = res;
-                            console.log(self.productData.info.data[3].bannerImg)
-                            self.paginate['count'] = res.total;
-                            window.base.computePageArr(self);
+                            self.aa = res.info.data;
+
                         };
                         window.base.articleList(postData,callback);
                     },
                     
-
-                    getBannerData() {
+                    getTeamData() {
                         var self = this;                    
                         var postData = {
                             count: 0,
@@ -423,18 +272,15 @@
                             pagesize:6,
                             is_page:true,
                             searchItem:{
-                                thirdapp_id:59,
-                                id:21
+                                thirdapp_id: 59,
+                                menu_id: 427,
                             }
                         };
                         var callback = (res)=>{
-                            self.bannerData = res.info.data[0];
-                            console.log(self.bannerData)
+                            self.teamData = res.info.data;
                         };
                         window.base.articleList(postData,callback);
                     },
-
-
                     getLabelData() {
                         var self = this;
                         var postData = window.base.cloneForm(self.paginate);
@@ -443,19 +289,59 @@
                         };
                         var callback = (res)=>{
                             self.labelData = res.info.data;
-                            self.productMenu = window.base.findKeyFromArray(self.labelData,'title','产品中心')[0];
-                            self.caseMenu = window.base.findKeyFromArray(self.labelData,'title','行业案例')[0];
                             self.aboutMenu = window.base.findKeyFromArray(self.labelData,'title','关于我们')[0]; 
                             var length= self.aboutMenu['child'].length;
                             self.menu_array = [];
-                            for(var i=0;i<length;i++){  
+                            for(var i=0;i< length;i++){  
                                 self.menu_array.push(self.aboutMenu['child'][i].id)
                             };
                             self.getArticleData();
+                            console.log(11,self.menu_array);
+                             
                         };
                         window.base.labelGet(postData,callback);
                     },  
                     
+                    getCooperData() {
+                        var self = this;
+                        var postData = window.base.cloneForm(self.paginate);
+                        postData.searchItem = window.base.cloneForm(self.searchItem);
+                        postData.searchItem = {
+                            thirdapp_id: 59,
+                            menu_id: 423,
+                        };
+                        var callback = (res) => {
+                            self.cooperData = res.info.data;
+                            self.paginate['count'] = res.total;
+                            window.base.computePageArr(self);
+                        };
+                        window.base.articleList(postData, callback);
+                    },
+                    getNewsData() {
+                        var self = this;
+                        var postData = window.base.cloneForm(self.paginate);
+                        postData.searchItem = window.base.cloneForm(self.searchItem);
+                        postData.searchItem = {
+                            thirdapp_id: 59,
+                            menu_id: 424,
+                        };
+                        var callback = (res) => {
+                        console.log(res)
+
+                            self.newsData = res.info.data;
+                            for (var i = 0; i < self.newsData.length; i++) {
+                                self.dayData.push(parseInt(self.newsData[i]['create_time'].slice(8,10)));
+                                self.monthData.push(self.newsData[i]['create_time'].slice(0,7));
+                                //self.monthData[i].replace(/"/,' ')
+                                //console.log(self.monthData)
+                            };
+
+                            console.log(self.monthData)
+                            self.paginate['count'] = res.total;
+                            window.base.computePageArr(self);
+                        };
+                        window.base.articleList(postData, callback);
+                    },
 
                     changePage(e){
                         var self = this;
@@ -477,7 +363,6 @@
 
                     linkTo(e){
                         var self = this;
-                        console.log(e);
                         self.linkPage = window.base.getDataSet(e).page;
                         window.base.linkTo(self);
                         
@@ -495,116 +380,26 @@
                         window.location.href="./product.html?id="+art_id;
                     },
 
-                    intoDetail(e){
+                    intopage(e){
                         var self = this;
                         var art_id = window.base.getDataSet(e).id;
-                        window.location.href="./detail.html?id="+art_id;
+                        window.location.href = "./detail1.html?id=" + art_id;
+                     },
+                    intoDetail(e) {
+                        var self = this;
+                        var art_id = window.base.getDataSet(e).id;
+                        window.location.href = "./detail.html?id=" + art_id;
                     },
 
                 }
             });
-
-        $("#second_menu1").hover(function(){
-
-         
-                $(this).show();
-               
-                    },function(){
-                $(this).hide();
-        
-            
-        });
-
-        $("#second_menu2").hover(function(){
-           
-                $(this).show();
-               
-                    },function(){
-                $(this).hide();
-           
-        })
-
 </script>
-<script type="text/javascript">
-  
-    function second_show1(){
-        $("#second_menu2").css({"width":"0%","display":"none"});
-          
-        setTimeout(function(){
-             $("#second_menu1").css({"width":"100%","display":"block"});
-        },200)
-
-    }
 
 
-
-     function second_show2(){ 
-        $("#second_menu1").css({"width":"0%","display":"none"});
-      
-        setTimeout(function(){
-             $("#second_menu2").css({"width":"100%","display":"block"});
-        },200) 
-
-    }
-   
-
- var w=$(window).width();
-  if(w<768){
-    
-    function  menuShow(event){
-    
-        $(event).find("dl").css({"height":"100%","display":"block"});
-       
-    }
-     function  menuHidden(event){
-
-      
-        $(event).find("dl").css({"height":"0","display":"none"});
-    }
-   }
-</script>
-<script type="text/javascript">
-$(window).load(function() {
-    
-
-     $('#item1').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-    
-           $('.item1_left').addClass('fadeInLeft animated');  
-           $('.item1_right').addClass('fadeInRight animated'); 
-        }
-    }, {
-        offset: '300px'
-
-    });
-     $('#item2').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-    
-           $('.item2_left').addClass('fadeInLeft animated');  
-           $('.item2_right').addClass('fadeInRight animated'); 
-        }
-    }, {
-        offset: '500px'
-
-    });
-     $('#item3').waypoint(function(direction) {
-
-        if (direction === 'down' && !$(this.element).hasClass('animated')) {
-           $('.item3_left').addClass('fadeInLeft animated');  
-           $('.item3_right').addClass('fadeInRight animated');
-          
-        }
-    }, {
-        offset: '700px'
-
-    });
-    
-
-
-});
-
+ <script type="text/javascript">
+    window.onload = function () {
+       $(".banner").css("height","auto");
+    };
 </script>
 </body>
 </html>
